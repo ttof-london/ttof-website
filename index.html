@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Two Tons of Fun - The ultimate club night experience. Get tickets, join the fun!">
+    <meta name="theme-color" content="#E85A71">
+    
+    <title>Two Tons of Fun</title>
+    
+    <!-- PWA Manifest - This makes it installable as an app -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="TTOF-main-logo.png">
+    
+    <!-- Google Fonts - Fun, friendly fonts that match your vibe -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========================================
+           🎨 COLORS - EASY TO CHANGE!
+           Just change these values to update the whole site
+           ======================================== */
+        :root {
+            --color-brown: #5D3A3A;
+            --color-pink: #E85A71;
+            --color-yellow: #F5E6A3;
+            --color-cream: #FDF8E8;
+            --color-white: #FFFFFF;
+            --color-black: #2D2D2D;
+            --color-red-heart: #E53935;
+        }
+
+        /* ========================================
+           BASE STYLES
+           ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--color-white);
+            color: var(--color-black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
+        }
+
+        /* ========================================
+           NAVIGATION
+           ======================================== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--color-white);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+
+        .nav-logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-brown);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: var(--color-pink);
+            color: var(--color-white);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            background: var(--color-pink);
+            color: var(--color-white);
+        }
+
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--color-brown);
+        }
+
+        /* ========================================
+           HERO SECTION
+           ======================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 120px 20px 60px;
+            background: var(--color-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Fun decorative shapes */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: var(--color-yellow);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 300px;
+            height: 300px;
+            background: var(--color-pink);
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: float 6s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        .hero-logo {
+            max-width: 400px;
+            width: 90%;
+            height: auto;
+            margin-bottom: 30px;
+            animation: bounceIn 1s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .hero-tagline {
+            font-size: 1.5rem;
+            color: var(--color-brown);
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Fredoka', sans-serif;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--color-pink);
+            color: var(--color-white);
+            box-shadow: 0 4px 15px rgba(232, 90, 113, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-brown);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(93, 58, 58, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--color-yellow);
+            color: var(--color-brown);
+            box-shadow: 0 4px 15px rgba(245, 230, 163, 0.6);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-brown);
+            color: var(--color-white);
+            transform: translateY(-3px);
+        }
+
+        /* ========================================
+           SECTIONS (General)
+           ======================================== */
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--color-brown);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--color-black);
+            opacity: 0.8;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        /* ========================================
+           ABOUT SECTION
+           ======================================== */
+        .about {
+            background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-white) 100%);
+            padding: 80px 20px;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: var(--color-white);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: var(--color-pink);
+            margin-bottom: 10px;
+        }
+
+        /* ========================================
+           TICKETS SECTION (Outsavvy Embed)
+           ======================================== */
+        .tickets {
+            background: var(--color-white);
+        }
+
+        .tickets-container {
+            background: var(--color-cream);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 10px 60px rgba(0,0,0,0.1);
+        }
+
+        /* This is where your Outsavvy widget goes */
+        .outsavvy-embed {
+            width: 100%;
+            min-height: 500px;
+            border: none;
+            border-radius: 15px;
+        }
+
+        /* Placeholder if no widget yet */
+        .widget-placeholder {
+            background: linear-gradient(135deg, var(--color-pink), var(--color-brown));
+            color: var(--color-white);
+            padding: 60px 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .widget-placeholder h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .widget-placeholder p {
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        /* ========================================
+           NEWSLETTER SECTION (Brevo Embed)
+           ======================================== */
+        .newsletter {
+            background: var(--color-pink);
+            color: var(--color-white);
+            padding: 80px 20px;
+        }
+
+        .newsletter .section-title {
+            color: var(--color-white);
+        }
+
+        .newsletter .section-subtitle {
+            color: var(--color-white);
+            opacity: 0.9;
+        }
+
+        .newsletter-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--color-white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        /* Brevo form styling override */
+        .brevo-embed {
+            width: 100%;
+            min-height: 300px;
+            border: none;
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .footer {
+            background: var(--color-brown);
+            color: var(--color-white);
+            padding: 60px 20px 30px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--color-yellow);
+        }
+
+        .footer-section p {
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--color-pink);
+            border-radius: 50%;
+            color: var(--color-white);
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--color-yellow);
+            color: var(--color-brown);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.8;
+        }
+
+        /* ========================================
+           INSTALL APP PROMPT (PWA)
+           ======================================== */
+        .install-prompt {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            max-width: 400px;
+            background: var(--color-brown);
+            color: var(--color-white);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            display: none;
+            z-index: 9999;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .install-prompt h4 {
+            margin-bottom: 10px;
+            color: var(--color-yellow);
+        }
+
+        .install-prompt p {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .install-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .install-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .install-btn.yes {
+            background: var(--color-pink);
+            color: var(--color-white);
+        }
+
+        .install-btn.no {
+            background: transparent;
+            color: var(--color-white);
+            border: 1px solid var(--color-white);
+        }
+
+        /* ========================================
+           MOBILE RESPONSIVE
+           ======================================== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--color-white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-logo {
+                max-width: 280px;
+            }
+
+            .hero-tagline {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                padding: 0 20px;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .tickets-container {
+                padding: 20px;
+            }
+
+            .newsletter-container {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================
+         NAVIGATION
+         ======================================== -->
+    <nav class="nav">
+        <img src="TTOF-main-logo.png" alt="Two Tons of Fun" class="nav-logo">
+        <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#tickets">Tickets</a></li>
+            <li><a href="#newsletter">Newsletter</a></li>
+            <!-- 
+            =============================================
+            🛍️ ADD MORE PAGES HERE! Just copy this line:
+            <li><a href="merch.html">Merch</a></li>
+            =============================================
+            -->
+        </ul>
+    </nav>
+
+    <!-- ========================================
+         HERO SECTION
+         ======================================== -->
+    <section class="hero" id="home">
+        <img src="TTOF-main-logo.png" alt="Two Tons of Fun" class="hero-logo">
+        <p class="hero-tagline">London's most body-positive club night! 🎉</p>
+        <div class="hero-buttons">
+            <a href="#tickets" class="btn btn-primary">
+                🎟️ Get Tickets
+            </a>
+            <a href="#newsletter" class="btn btn-secondary">
+                💌 Join the List
+            </a>
+        </div>
+    </section>
+
+    <!-- ========================================
+         ABOUT SECTION
+         ======================================== -->
+    <section class="about" id="about">
+        <div class="section">
+            <h2 class="section-title">What is Two Tons of Fun?</h2>
+            <p class="section-subtitle">The party where EVERY body is welcome!</p>
+            
+            <div class="about-content">
+                <p class="about-text">
+                    <!-- ✏️ EDIT THIS TEXT TO DESCRIBE YOUR NIGHT! -->
+                    Two Tons of Fun is the ultimate celebration of body positivity, great music, 
+                    and unforgettable vibes. We believe everyone deserves a space to dance, 
+                    feel fabulous, and have the time of their lives!
+                </p>
+            </div>
+
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">🎵</div>
+                    <h3>Amazing DJs</h3>
+                    <p>The best beats to keep you dancing all night long</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💖</div>
+                    <h3>Body Positive</h3>
+                    <p>A safe space where every body is celebrated</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎉</div>
+                    <h3>Unforgettable Vibes</h3>
+                    <p>Themed nights, performers, and pure joy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         TICKETS SECTION
+         ======================================== -->
+    <section class="tickets" id="tickets">
+        <div class="section">
+            <h2 class="section-title">Get Your Tickets</h2>
+            <p class="section-subtitle">Don't miss out on the fun!</p>
+            
+            <div class="tickets-container">
+                <!-- 
+                =============================================
+                🎟️ OUTSAVVY WIDGET GOES HERE!
+                
+                HOW TO ADD YOUR OUTSAVVY WIDGET:
+                1. Log in to Outsavvy
+                2. Go to your event → Promote Event → Widgets
+                3. Copy the iframe code they give you
+                4. Replace the placeholder below with your code
+                
+                It will look something like:
+                <iframe src="https://www.outsavvy.com/widget/..." 
+                        class="outsavvy-embed"></iframe>
+                =============================================
+                -->
+                
+                <!-- PLACEHOLDER - Delete this and paste your Outsavvy code -->
+                <div class="widget-placeholder">
+                    <h3>🎟️ Tickets Coming Soon!</h3>
+                    <p>Check back here for upcoming events</p>
+                    <a href="https://www.outsavvy.com" target="_blank" class="btn btn-secondary">
+                        Visit Outsavvy
+                    </a>
+                </div>
+                <!-- END PLACEHOLDER -->
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         NEWSLETTER SECTION
+         ======================================== -->
+    <section class="newsletter" id="newsletter">
+        <div class="section">
+            <h2 class="section-title">Stay in the Loop!</h2>
+            <p class="section-subtitle">Be the first to know about events, early bird tickets & exclusive offers</p>
+            
+            <div class="newsletter-container">
+                <!-- 
+                =============================================
+                📧 BREVO NEWSLETTER FORM GOES HERE!
+                
+                HOW TO ADD YOUR BREVO FORM:
+                1. Log in to Brevo
+                2. Go to Marketing → Forms → Sign-up
+                3. Create your form (or use existing one)
+                4. Click "Share" and copy the IFRAME code
+                5. Replace the placeholder below with your code
+                
+                It will look something like:
+                <iframe src="https://sibforms.com/serve/..." 
+                        class="brevo-embed"></iframe>
+                =============================================
+                -->
+                
+                <!-- PLACEHOLDER - Delete this and paste your Brevo code -->
+                <div style="text-align: center; padding: 40px 20px;">
+                    <h3 style="color: var(--color-brown); margin-bottom: 15px;">📧 Newsletter Coming Soon!</h3>
+                    <p style="color: var(--color-black);">We're setting up our mailing list. Check back soon!</p>
+                </div>
+                <!-- END PLACEHOLDER -->
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FOOTER
+         ======================================== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Two Tons of Fun</h4>
+                <p>London's most body-positive club night!</p>
+                <p>Where every body is welcome. 💖</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <p>Stay connected for the latest updates!</p>
+                <div class="social-links">
+                    <!-- 
+                    =============================================
+                    📱 ADD YOUR SOCIAL LINKS HERE!
+                    Replace the # with your actual links
+                    =============================================
+                    -->
+                    <a href="#" aria-label="Instagram">📸</a>
+                    <a href="#" aria-label="Facebook">👥</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <!-- ✏️ ADD YOUR EMAIL HERE -->
+                <p>📧 hello@twotons.fun</p>
+                <p>📍 London, UK</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 Two Tons of Fun. Made with 💖</p>
+        </div>
+    </footer>
+
+    <!-- ========================================
+         INSTALL APP PROMPT
+         ======================================== -->
+    <div class="install-prompt" id="installPrompt">
+        <h4>📱 Install Our App!</h4>
+        <p>Add Two Tons of Fun to your home screen for the best experience and push notifications!</p>
+        <div class="install-buttons">
+            <button class="install-btn yes" onclick="installApp()">Install</button>
+            <button class="install-btn no" onclick="dismissInstall()">Not Now</button>
+        </div>
+    </div>
+
+    <!-- ========================================
+         JAVASCRIPT
+         ======================================== -->
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                // Close mobile menu if open
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // PWA Install Prompt
+        let deferredPrompt;
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // Show install prompt after 30 seconds
+            setTimeout(() => {
+                if (deferredPrompt) {
+                    document.getElementById('installPrompt').style.display = 'block';
+                }
+            }, 30000);
+        });
+
+        function installApp() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    deferredPrompt = null;
+                    document.getElementById('installPrompt').style.display = 'none';
+                });
+            }
+        }
+
+        function dismissInstall() {
+            document.getElementById('installPrompt').style.display = 'none';
+        }
+
+        // Register Service Worker for PWA & Push Notifications
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registered successfully');
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+
+</body>
+</html>

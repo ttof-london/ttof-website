@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Two Tons of Fun Official Merch - T-shirts, hoodies and more!">
+    <meta name="theme-color" content="#E85A71">
+    
+    <title>Merch - Two Tons of Fun</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="TTOF-main-logo.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Same color variables as main site */
+        :root {
+            --color-brown: #5D3A3A;
+            --color-pink: #E85A71;
+            --color-yellow: #F5E6A3;
+            --color-cream: #FDF8E8;
+            --color-white: #FFFFFF;
+            --color-black: #2D2D2D;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--color-white);
+            color: var(--color-black);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Navigation - Same as main site */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--color-white);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+
+        .nav-logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-brown);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--color-pink);
+            color: var(--color-white);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--color-brown);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 150px 20px 80px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-white) 100%);
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            color: var(--color-brown);
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--color-black);
+            opacity: 0.8;
+        }
+
+        /* Merch Grid */
+        .merch-section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .merch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .merch-card {
+            background: var(--color-white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .merch-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .merch-image {
+            width: 100%;
+            height: 300px;
+            background: var(--color-cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .merch-info {
+            padding: 25px;
+        }
+
+        .merch-info h3 {
+            color: var(--color-brown);
+            margin-bottom: 10px;
+        }
+
+        .merch-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-pink);
+            margin-bottom: 15px;
+        }
+
+        .merch-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--color-pink);
+            color: var(--color-white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .merch-btn:hover {
+            background: var(--color-brown);
+            transform: translateY(-2px);
+        }
+
+        /* Coming Soon Placeholder */
+        .coming-soon {
+            text-align: center;
+            padding: 100px 20px;
+            background: var(--color-cream);
+            border-radius: 30px;
+            margin: 40px auto;
+            max-width: 600px;
+        }
+
+        .coming-soon h2 {
+            color: var(--color-pink);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-brown);
+            color: var(--color-white);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer p {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <a href="index.html">
+            <img src="TTOF-main-logo.png" alt="Two Tons of Fun" class="nav-logo">
+        </a>
+        <button class="mobile-menu-btn">☰</button>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#tickets">Tickets</a></li>
+            <li><a href="merch.html" class="active">Merch</a></li>
+            <li><a href="index.html#newsletter">Newsletter</a></li>
+        </ul>
+    </nav>
+
+    <header class="page-header">
+        <h1>🛍️ Official Merch</h1>
+        <p>Wear your love for Two Tons of Fun!</p>
+    </header>
+
+    <main class="merch-section">
+        <!-- 
+        =============================================
+        🛍️ WHEN YOU'RE READY TO ADD MERCH:
+        
+        Option 1: Link to external shop (Shopify, Etsy, etc.)
+        Just change the href in the buttons to your shop URL
+        
+        Option 2: Embed a shop widget
+        Many platforms offer embed codes you can paste here
+        =============================================
+        -->
+
+        <div class="coming-soon">
+            <h2>🎉 Merch Coming Soon!</h2>
+            <p>We're working on some amazing goodies for you. Join our newsletter to be the first to know when they drop!</p>
+            <br>
+            <a href="index.html#newsletter" class="merch-btn">Join Newsletter</a>
+        </div>
+
+        <!-- 
+        =============================================
+        EXAMPLE MERCH CARDS - Uncomment when ready:
+        =============================================
+        
+        <div class="merch-grid">
+            <div class="merch-card">
+                <div class="merch-image">👕</div>
+                <div class="merch-info">
+                    <h3>TTOF Classic Tee</h3>
+                    <p>Soft cotton, available in all sizes</p>
+                    <div class="merch-price">£25</div>
+                    <a href="#" class="merch-btn">Buy Now</a>
+                </div>
+            </div>
+            
+            <div class="merch-card">
+                <div class="merch-image">🧥</div>
+                <div class="merch-info">
+                    <h3>TTOF Hoodie</h3>
+                    <p>Cozy and stylish</p>
+                    <div class="merch-price">£45</div>
+                    <a href="#" class="merch-btn">Buy Now</a>
+                </div>
+            </div>
+            
+            <div class="merch-card">
+                <div class="merch-image">🧢</div>
+                <div class="merch-info">
+                    <h3>TTOF Cap</h3>
+                    <p>Embroidered logo</p>
+                    <div class="merch-price">£18</div>
+                    <a href="#" class="merch-btn">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        -->
+
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Two Tons of Fun. Made with 💖</p>
+    </footer>
+
+</body>
+</html>
