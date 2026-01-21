@@ -16,7 +16,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <style>
         /* ========================================
            🎨 COLORS - EASY TO CHANGE!
@@ -50,8 +51,8 @@
         }
 
         h1, h2, h3, h4 {
-            font-family: 'Fredoka', sans-serif;
-            font-weight: 600;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
         }
 
         /* ========================================
@@ -206,16 +207,16 @@
             padding: 15px 40px;
             font-size: 1.1rem;
             font-weight: 700;
-            font-family: 'Fredoka', sans-serif;
+            font-family: 'Quicksand', sans-serif;
             border: none;
-            border-radius: 50px;
+            border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             gap: 10px;
-        }
+}
 
         .btn-primary {
             background: var(--color-pink);
@@ -568,6 +569,15 @@
             }
         }
     </style>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "4479fcc3-595f-422f-8e20-e5621f971d1f",
+    });
+  });
+</script>
 </head>
 <body>
 
@@ -579,9 +589,9 @@
         <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
         <ul class="nav-links" id="navLinks">
             <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#about">About</a></li>
             <li><a href="#tickets">Tickets</a></li>
             <li><a href="#newsletter">Newsletter</a></li>
+            <li><a href="#about">About TToF</a></li>
             <!-- 
             =============================================
             🛍️ ADD MORE PAGES HERE! Just copy this line:
@@ -596,60 +606,24 @@
          ======================================== -->
     <section class="hero" id="home">
         <img src="TTOF-main-logo.png" alt="Two Tons of Fun" class="hero-logo">
-        <p class="hero-tagline">London's most body-positive club night! 🎉</p>
+        <p class="hero-tagline">London's most body-positive club night for all the Chubs, Chasers & anything in-between! 🎉</p>
         <div class="hero-buttons">
-            <a href="#tickets" class="btn btn-primary">
+            <a href="https://link.outsavvy.com/twotonsoffun?utm_source=website&utm_medium=referral&utm_campaign=website-ticket-link" class="btn btn-primary">
                 🎟️ Get Tickets
             </a>
             <a href="#newsletter" class="btn btn-secondary">
-                💌 Join the List
+                💌 Sign Up To Our Newsletter
             </a>
         </div>
     </section>
 
-    <!-- ========================================
-         ABOUT SECTION
-         ======================================== -->
-    <section class="about" id="about">
-        <div class="section">
-            <h2 class="section-title">What is Two Tons of Fun?</h2>
-            <p class="section-subtitle">The party where EVERY body is welcome!</p>
-            
-            <div class="about-content">
-                <p class="about-text">
-                    <!-- ✏️ EDIT THIS TEXT TO DESCRIBE YOUR NIGHT! -->
-                    Two Tons of Fun is the ultimate celebration of body positivity, great music, 
-                    and unforgettable vibes. We believe everyone deserves a space to dance, 
-                    feel fabulous, and have the time of their lives!
-                </p>
-            </div>
-
-            <div class="features">
-                <div class="feature-card">
-                    <div class="feature-icon">🎵</div>
-                    <h3>Amazing DJs</h3>
-                    <p>The best beats to keep you dancing all night long</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💖</div>
-                    <h3>Body Positive</h3>
-                    <p>A safe space where every body is celebrated</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎉</div>
-                    <h3>Unforgettable Vibes</h3>
-                    <p>Themed nights, performers, and pure joy</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- ========================================
          TICKETS SECTION
          ======================================== -->
     <section class="tickets" id="tickets">
         <div class="section">
-            <h2 class="section-title">Get Your Tickets</h2>
+            <h2 class="section-title">Grab Your Tickets Now!</h2>
             <p class="section-subtitle">Don't miss out on the fun!</p>
             
             <div class="tickets-container">
@@ -670,13 +644,20 @@
                 -->
                 
                 <!-- PLACEHOLDER - Delete this and paste your Outsavvy code -->
-                <div class="widget-placeholder">
-                    <h3>🎟️ Tickets Coming Soon!</h3>
-                    <p>Check back here for upcoming events</p>
-                    <a href="https://www.outsavvy.com" target="_blank" class="btn btn-secondary">
-                        Visit Outsavvy
-                    </a>
-                </div>
+                <div id="outsavvy-widget-ticketshop-1874"></div>
+
+<script src="https://www.outsavvy.com/widgets/widget.js?version=2"></script>
+
+<script type="text/javascript">
+    window.OSWidgets.createWidget({
+        // Required
+        widgetType: 'ticketshop',
+        partnerId: '1874',
+        iframeContainerId: 'outsavvy-widget-ticketshop-1874',
+        // Optional
+        iframeContainerHeight: '800px'  // Widget height in pixels
+    });
+</script>
                 <!-- END PLACEHOLDER -->
                 
             </div>
@@ -710,12 +691,48 @@
                 -->
                 
                 <!-- PLACEHOLDER - Delete this and paste your Brevo code -->
-                <div style="text-align: center; padding: 40px 20px;">
-                    <h3 style="color: var(--color-brown); margin-bottom: 15px;">📧 Newsletter Coming Soon!</h3>
-                    <p style="color: var(--color-black);">We're setting up our mailing list. Check back soon!</p>
-                </div>
+                <iframe width="540" height="700" src="https://64e25386.sibforms.com/serve/MUIFAGw8aUGNjrjUYCrZq-6_KQcFuESTjB8C-ka0B516sRoeH6nGpCoDhtpWnpQr5ELLj9cqXfbppvFUMRgP3v_P5DKRjJcWgPv-_pgV24KKHfd7iUukk2nTIAKiUeWW_xgVTekU9Am3weJCYMif6sOOH9cIefgLnb6DcAs-QIf-RnlNe-MGIqZE2Eii51r1z20ApBshJutpW1_m4g==" frameborder="0" scrolling="auto" allowfullscreen style="display: block;margin-left: auto;margin-right: auto;max-width: 100%;"></iframe>
                 <!-- END PLACEHOLDER -->
                 
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         ABOUT SECTION
+         ======================================== -->
+    <section class="about" id="about">
+        <div class="section">
+            <h2 class="section-title">What is Two Tons of Fun?</h2>
+            <!--p class="section-subtitle">The party where EVERY body is welcome!</p-->
+            
+            <div class="about-content">
+                <p class="about-text">
+                    <!-- ✏️ EDIT THIS TEXT TO DESCRIBE YOUR NIGHT! -->
+                    Since its inception in 2021, Two Tons of Fun has been standing by its mission statement: creating a <b>safe and inclusive space for chubs, chasers and admirers</b> who want to party and have a good time. 
+                    <br>Named after <b>the iconic duo "The Weather Girls"</b>, we have been prouding ourselves in making the club night the ultimate celebration of body positivity, pop music, 
+                    and unforgettable vibes. 
+                    <br>At Two Tons of Fun, you can be yourself, you can feel fabulous just the way you are, and you can... simply <b>have the time of your life!</b>
+                    <br><h3>Chub? Chasers? Big? Small? You're all welcome!</h3>
+                </p>
+            </div>
+
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">🎵</div>
+                    <h3>Amazing POP Anthems</h3>
+                    <p>The best of what Pop Music can offer to keep you dancing all night long</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💖</div>
+                    <h3>Body Positive</h3>
+                    <p>A safe space where every body is celebrated</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎉</div>
+                    <h3>Unforgettable Vibes</h3>
+                    <p>Themed nights, doughnuts, and pure joy!</p>
+                </div>
             </div>
         </div>
     </section>
@@ -732,26 +749,19 @@
             </div>
             
             <div class="footer-section">
-                <h4>Follow Us</h4>
+                <h4>Follow Us!</h4>
                 <p>Stay connected for the latest updates!</p>
                 <div class="social-links">
-                    <!-- 
-                    =============================================
-                    📱 ADD YOUR SOCIAL LINKS HERE!
-                    Replace the # with your actual links
-                    =============================================
-                    -->
-                    <a href="#" aria-label="Instagram">📸</a>
-                    <a href="#" aria-label="Facebook">👥</a>
-                    <a href="#" aria-label="Twitter">🐦</a>
-                </div>
+    <a href="https://www.instagram.com/two_tons_of_fun/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/TwoTonsOfFunLDN/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+</div>
             </div>
             
             <div class="footer-section">
                 <h4>Contact</h4>
                 <!-- ✏️ ADD YOUR EMAIL HERE -->
-                <p>📧 hello@twotons.fun</p>
-                <p>📍 London, UK</p>
+                <p>📧 team@twotonsoffun.co.uk</p>
+            
             </div>
         </div>
         
