@@ -5,14 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Two Tons of Fun - The ultimate club night experience. Get tickets, join the fun!">
     <meta name="theme-color" content="#E85A71">
-    
     <title>Two Tons of Fun</title>
-    
-    <!-- PWA Manifest - This makes it installable as an app -->
+
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" 
+        data-cbid="b09a50c8-5ce6-473d-a771-89d29c5f0567" 
+        data-blockingmode="auto" 
+        type="text/javascript"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XJNW27P81X"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XJNW27P81X');
+    </script>
+
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="TTOF-main-logo.png">
     
-    <!-- Google Fonts - Fun, friendly fonts that match your vibe -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -20,8 +31,7 @@
 
     <style>
         /* ========================================
-           🎨 COLORS - EASY TO CHANGE!
-           Just change these values to update the whole site
+           🎨 COLORS
            ======================================== */
         :root {
             --color-brown: #5D3A3A;
@@ -30,17 +40,12 @@
             --color-cream: #FDF8E8;
             --color-white: #FFFFFF;
             --color-black: #2D2D2D;
-            --color-red-heart: #E53935;
         }
 
         /* ========================================
            BASE STYLES
            ======================================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Quicksand', sans-serif;
@@ -60,9 +65,7 @@
            ======================================== */
         .nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             background: var(--color-white);
             padding: 15px 30px;
             display: flex;
@@ -72,16 +75,9 @@
             box-shadow: 0 2px 20px rgba(0,0,0,0.08);
         }
 
-        .nav-logo {
-            height: 50px;
-            width: auto;
-        }
+        .nav-logo { height: 50px; width: auto; }
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
 
         .nav-links a {
             text-decoration: none;
@@ -104,7 +100,6 @@
             color: var(--color-white);
         }
 
-        /* Mobile menu button */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -129,31 +124,16 @@
             overflow: hidden;
         }
 
-        /* Fun decorative shapes */
         .hero::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 400px;
-            height: 400px;
-            background: var(--color-yellow);
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: float 8s ease-in-out infinite;
+            content: ''; position: absolute; top: -100px; right: -100px;
+            width: 400px; height: 400px; background: var(--color-yellow);
+            border-radius: 50%; opacity: 0.3; animation: float 8s ease-in-out infinite;
         }
 
         .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -50px;
-            left: -50px;
-            width: 300px;
-            height: 300px;
-            background: var(--color-pink);
-            border-radius: 50%;
-            opacity: 0.2;
-            animation: float 6s ease-in-out infinite reverse;
+            content: ''; position: absolute; bottom: -50px; left: -50px;
+            width: 300px; height: 300px; background: var(--color-pink);
+            border-radius: 50%; opacity: 0.2; animation: float 6s ease-in-out infinite reverse;
         }
 
         @keyframes float {
@@ -162,13 +142,9 @@
         }
 
         .hero-logo {
-            max-width: 400px;
-            width: 90%;
-            height: auto;
-            margin-bottom: 30px;
+            max-width: 400px; width: 90%; height: auto;
+            margin-bottom: 30px; z-index: 1;
             animation: bounceIn 1s ease-out;
-            position: relative;
-            z-index: 1;
         }
 
         @keyframes bounceIn {
@@ -179,12 +155,8 @@
         }
 
         .hero-tagline {
-            font-size: 1.5rem;
-            color: var(--color-brown);
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-            z-index: 1;
+            font-size: 1.5rem; color: var(--color-brown); text-align: center;
+            margin-bottom: 40px; z-index: 1;
             animation: fadeInUp 1s ease-out 0.3s both;
         }
 
@@ -194,524 +166,205 @@
         }
 
         .hero-buttons {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-            position: relative;
-            z-index: 1;
-            animation: fadeInUp 1s ease-out 0.5s both;
+            display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
+            z-index: 1; animation: fadeInUp 1s ease-out 0.5s both;
         }
 
         .btn {
-            padding: 15px 40px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            font-family: 'Quicksand', sans-serif;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-}
-
-        .btn-primary {
-            background: var(--color-pink);
-            color: var(--color-white);
-            box-shadow: 0 4px 15px rgba(232, 90, 113, 0.4);
+            padding: 15px 40px; font-size: 1.1rem; font-weight: 700;
+            font-family: 'Quicksand', sans-serif; border: none; border-radius: 5px;
+            cursor: pointer; text-decoration: none; transition: all 0.3s ease;
+            display: inline-flex; align-items: center; gap: 10px;
         }
 
+        .btn-primary {
+            background: var(--color-pink); color: var(--color-white);
+            box-shadow: 0 4px 15px rgba(232, 90, 113, 0.4);
+        }
         .btn-primary:hover {
-            background: var(--color-brown);
-            transform: translateY(-3px);
+            background: var(--color-brown); transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(93, 58, 58, 0.4);
         }
 
         .btn-secondary {
-            background: var(--color-yellow);
-            color: var(--color-brown);
+            background: var(--color-yellow); color: var(--color-brown);
             box-shadow: 0 4px 15px rgba(245, 230, 163, 0.6);
         }
-
         .btn-secondary:hover {
-            background: var(--color-brown);
-            color: var(--color-white);
+            background: var(--color-brown); color: var(--color-white);
             transform: translateY(-3px);
         }
 
         /* ========================================
-           SECTIONS (General)
+           SECTIONS
            ======================================== */
-        .section {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 20px; color: var(--color-brown); }
+        .section-subtitle { text-align: center; color: var(--color-black); opacity: 0.8; margin-bottom: 50px; font-size: 1.1rem; }
 
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 20px;
-            color: var(--color-brown);
-        }
+        .about { background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-white) 100%); padding: 80px 20px; }
+        .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .about-text { font-size: 1.2rem; line-height: 1.8; margin-bottom: 30px; }
 
-        .section-subtitle {
-            text-align: center;
-            color: var(--color-black);
-            opacity: 0.8;
-            margin-bottom: 50px;
-            font-size: 1.1rem;
-        }
-
-        /* ========================================
-           ABOUT SECTION
-           ======================================== */
-        .about {
-            background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-white) 100%);
-            padding: 80px 20px;
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 50px; }
         .feature-card {
-            background: var(--color-white);
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            background: var(--color-white); padding: 30px; border-radius: 20px;
+            text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             transition: transform 0.3s ease;
         }
+        .feature-card:hover { transform: translateY(-10px); }
+        .feature-icon { font-size: 3rem; margin-bottom: 20px; }
+        .feature-card h3 { color: var(--color-pink); margin-bottom: 10px; }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .feature-card h3 {
-            color: var(--color-pink);
-            margin-bottom: 10px;
-        }
-
-        /* ========================================
-           TICKETS SECTION (Outsavvy Embed)
-           ======================================== */
-        .tickets {
-            background: var(--color-white);
-        }
-
+        .tickets { background: var(--color-white); }
         .tickets-container {
-            background: var(--color-cream);
-            border-radius: 30px;
-            padding: 40px;
+            background: var(--color-cream); border-radius: 30px; padding: 40px;
             box-shadow: 0 10px 60px rgba(0,0,0,0.1);
         }
 
-        /* This is where your Outsavvy widget goes */
-        .outsavvy-embed {
-            width: 100%;
-            min-height: 500px;
-            border: none;
-            border-radius: 15px;
-        }
-
-        /* Placeholder if no widget yet */
-        .widget-placeholder {
-            background: linear-gradient(135deg, var(--color-pink), var(--color-brown));
-            color: var(--color-white);
-            padding: 60px 30px;
-            border-radius: 15px;
-            text-align: center;
-        }
-
-        .widget-placeholder h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-        }
-
-        .widget-placeholder p {
-            opacity: 0.9;
-            margin-bottom: 20px;
-        }
-
-        /* ========================================
-           NEWSLETTER SECTION (Brevo Embed)
-           ======================================== */
-        .newsletter {
-            background: var(--color-pink);
-            color: var(--color-white);
-            padding: 80px 20px;
-        }
-
-        .newsletter .section-title {
-            color: var(--color-white);
-        }
-
-        .newsletter .section-subtitle {
-            color: var(--color-white);
-            opacity: 0.9;
-        }
-
+        .newsletter { background: var(--color-pink); color: var(--color-white); padding: 80px 20px; }
+        .newsletter .section-title, .newsletter .section-subtitle { color: var(--color-white); }
         .newsletter-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: var(--color-white);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-        }
-
-        /* Brevo form styling override */
-        .brevo-embed {
-            width: 100%;
-            min-height: 300px;
-            border: none;
+            max-width: 600px; margin: 0 auto; background: var(--color-white);
+            border-radius: 20px; padding: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.2);
         }
 
         /* ========================================
            FOOTER
            ======================================== */
-        .footer {
-            background: var(--color-brown);
-            color: var(--color-white);
-            padding: 60px 20px 30px;
-        }
-
+        .footer { background: var(--color-brown); color: var(--color-white); padding: 60px 20px 30px; }
         .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            max-width: 1200px; margin: 0 auto; display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;
         }
+        .footer-section h4 { font-size: 1.3rem; margin-bottom: 20px; color: var(--color-yellow); }
+        .footer-section p { opacity: 0.9; margin-bottom: 10px; }
 
-        .footer-section h4 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: var(--color-yellow);
-        }
-
-        .footer-section p {
-            opacity: 0.9;
-            margin-bottom: 10px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
+        .social-links { display: flex; gap: 15px; margin-top: 20px; }
         .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background: var(--color-pink);
-            border-radius: 50%;
-            color: var(--color-white);
-            text-decoration: none;
-            font-size: 1.3rem;
-            transition: all 0.3s ease;
+            display: flex; align-items: center; justify-content: center;
+            width: 45px; height: 45px; background: var(--color-pink);
+            border-radius: 50%; color: var(--color-white); text-decoration: none;
+            font-size: 1.3rem; transition: all 0.3s ease;
         }
-
         .social-links a:hover {
-            background: var(--color-yellow);
-            color: var(--color-brown);
+            background: var(--color-yellow); color: var(--color-brown);
             transform: translateY(-3px);
         }
 
         .footer-bottom {
-            text-align: center;
-            padding-top: 40px;
-            margin-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            opacity: 0.8;
+            text-align: center; padding-top: 40px; margin-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.2); opacity: 0.8;
         }
 
         /* ========================================
            INSTALL APP PROMPT (PWA)
            ======================================== */
         .install-prompt {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            max-width: 400px;
-            background: var(--color-brown);
-            color: var(--color-white);
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            display: none;
-            z-index: 9999;
-            animation: slideUp 0.5s ease-out;
+            position: fixed; bottom: 20px; left: 20px; right: 20px;
+            max-width: 400px; background: var(--color-brown); color: var(--color-white);
+            padding: 20px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            display: none; z-index: 9999; animation: slideUp 0.5s ease-out;
         }
+        @keyframes slideUp { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .install-prompt h4 { margin-bottom: 10px; color: var(--color-yellow); }
+        .install-prompt p { margin-bottom: 15px; font-size: 0.95rem; }
+        .install-buttons { display: flex; gap: 10px; }
+        
+        .install-btn { flex: 1; padding: 10px; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; font-family: 'Quicksand', sans-serif; }
+        .install-btn.yes { background: var(--color-pink); color: var(--color-white); }
+        .install-btn.no { background: transparent; color: var(--color-white); border: 1px solid var(--color-white); }
 
-        @keyframes slideUp {
-            from { transform: translateY(100px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .install-prompt h4 {
-            margin-bottom: 10px;
-            color: var(--color-yellow);
-        }
-
-        .install-prompt p {
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-        }
-
-        .install-buttons {
-            display: flex;
-            gap: 10px;
-        }
-
-        .install-btn {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            font-family: 'Quicksand', sans-serif;
-        }
-
-        .install-btn.yes {
-            background: var(--color-pink);
-            color: var(--color-white);
-        }
-
-        .install-btn.no {
-            background: transparent;
-            color: var(--color-white);
-            border: 1px solid var(--color-white);
-        }
-
-        /* ========================================
-           MOBILE RESPONSIVE
-           ======================================== */
         @media (max-width: 768px) {
             .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--color-white);
-                flex-direction: column;
-                padding: 20px;
+                display: none; position: absolute; top: 100%; left: 0; right: 0;
+                background: var(--color-white); flex-direction: column; padding: 20px;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero-logo {
-                max-width: 280px;
-            }
-
-            .hero-tagline {
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                width: 100%;
-                padding: 0 20px;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .tickets-container {
-                padding: 20px;
-            }
-
-            .newsletter-container {
-                padding: 25px;
-            }
+            .nav-links.active { display: flex; }
+            .mobile-menu-btn { display: block; }
+            .hero-logo { max-width: 280px; }
+            .hero-buttons { flex-direction: column; width: 100%; padding: 0 20px; }
+            .btn { width: 100%; justify-content: center; }
         }
     </style>
-    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "4479fcc3-595f-422f-8e20-e5621f971d1f",
-      serviceWorkerParam: { scope: "/" },
-      serviceWorkerPath: "service-worker.js"
-    });
-  });
-</script>
 
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(async function(OneSignal) {
+        await OneSignal.init({
+          appId: "4479fcc3-595f-422f-8e20-e5621f971d1f",
+          serviceWorkerParam: { scope: "/" },
+          serviceWorkerPath: "service-worker.js",
+          // IMPORTANT: Ensure 'Auto Prompt' is DISABLED in OneSignal Dashboard
+          // for our custom Smart Prompt logic to work correctly.
+        });
+      });
+    </script>
 </head>
 <body>
-
-    <!-- ========================================
-         NAVIGATION
-         ======================================== -->
+    
     <nav class="nav">
         <img src="TTOF-main-logo.png" alt="Two Tons of Fun" class="nav-logo">
         <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
         <ul class="nav-links" id="navLinks">
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#tickets">Tickets</a></li>
-            <li><a href="#newsletter">Newsletter</a></li>
-            <li><a href="#about">About TToF</a></li>
-            <!-- 
-            =============================================
-            🛍️ ADD MORE PAGES HERE! Just copy this line:
-            <li><a href="merch.html">Merch</a></li>
-            =============================================
-            -->
+            <li><a href="#home" class="active" data-track="nav-home">Home</a></li>
+            <li><a href="#tickets" data-track="nav-tickets">Tickets</a></li>
+            <li><a href="#newsletter" data-track="nav-newsletter">Newsletter</a></li>
+            <li><a href="#about" data-track="nav-about">About TToF</a></li>
         </ul>
     </nav>
 
-    <!-- ========================================
-         HERO SECTION
-         ======================================== -->
     <section class="hero" id="home">
         <img src="TTOF-main-logo.png" alt="Two Tons of Fun" class="hero-logo">
         <p class="hero-tagline">London's most body-positive club night for all the Chubs, Chasers & anything in-between! 🎉</p>
         <div class="hero-buttons">
-            <a href="https://link.outsavvy.com/twotonsoffun?utm_source=website&utm_medium=referral&utm_campaign=website-ticket-link" class="btn btn-primary">
+            <a href="https://link.outsavvy.com/twotonsoffun?utm_source=website&utm_medium=referral&utm_campaign=website-ticket-link" 
+               class="btn btn-primary" data-track="hero-buy-tickets">
                 🎟️ Get Tickets
             </a>
-            <a href="#newsletter" class="btn btn-secondary">
+            <a href="#newsletter" class="btn btn-secondary" data-track="hero-newsletter">
                 💌 Sign Up To Our Newsletter
             </a>
         </div>
     </section>
 
-
-    <!-- ========================================
-         TICKETS SECTION
-         ======================================== -->
     <section class="tickets" id="tickets">
         <div class="section">
             <h2 class="section-title">Grab Your Tickets Now!</h2>
             <p class="section-subtitle">Don't miss out on the fun!</p>
-            
             <div class="tickets-container">
-                <!-- 
-                =============================================
-                🎟️ OUTSAVVY WIDGET GOES HERE!
-                
-                HOW TO ADD YOUR OUTSAVVY WIDGET:
-                1. Log in to Outsavvy
-                2. Go to your event → Promote Event → Widgets
-                3. Copy the iframe code they give you
-                4. Replace the placeholder below with your code
-                
-                It will look something like:
-                <iframe src="https://www.outsavvy.com/widget/..." 
-                        class="outsavvy-embed"></iframe>
-                =============================================
-                -->
-                
-                <!-- PLACEHOLDER - Delete this and paste your Outsavvy code -->
                 <div id="outsavvy-widget-ticketshop-1874"></div>
-
-<script src="https://www.outsavvy.com/widgets/widget.js?version=2"></script>
-
-<script type="text/javascript">
-    window.OSWidgets.createWidget({
-        // Required
-        widgetType: 'ticketshop',
-        partnerId: '1874',
-        iframeContainerId: 'outsavvy-widget-ticketshop-1874',
-        // Optional
-        iframeContainerHeight: '800px'  // Widget height in pixels
-    });
-</script>
-                <!-- END PLACEHOLDER -->
-                
+                <script src="https://www.outsavvy.com/widgets/widget.js?version=2"></script>
+                <script type="text/javascript">
+                    window.OSWidgets.createWidget({
+                        widgetType: 'ticketshop',
+                        partnerId: '1874',
+                        iframeContainerId: 'outsavvy-widget-ticketshop-1874',
+                        iframeContainerHeight: '800px'
+                    });
+                </script>
             </div>
         </div>
     </section>
 
-    <!-- ========================================
-         NEWSLETTER SECTION
-         ======================================== -->
     <section class="newsletter" id="newsletter">
         <div class="section">
             <h2 class="section-title">Stay in the Loop!</h2>
             <p class="section-subtitle">Be the first to know about events, early bird tickets & exclusive offers</p>
-            
             <div class="newsletter-container">
-                <!-- 
-                =============================================
-                📧 BREVO NEWSLETTER FORM GOES HERE!
-                
-                HOW TO ADD YOUR BREVO FORM:
-                1. Log in to Brevo
-                2. Go to Marketing → Forms → Sign-up
-                3. Create your form (or use existing one)
-                4. Click "Share" and copy the IFRAME code
-                5. Replace the placeholder below with your code
-                
-                It will look something like:
-                <iframe src="https://sibforms.com/serve/..." 
-                        class="brevo-embed"></iframe>
-                =============================================
-                -->
-                
-                <!-- PLACEHOLDER - Delete this and paste your Brevo code -->
                 <iframe width="540" height="700" src="https://64e25386.sibforms.com/serve/MUIFAGw8aUGNjrjUYCrZq-6_KQcFuESTjB8C-ka0B516sRoeH6nGpCoDhtpWnpQr5ELLj9cqXfbppvFUMRgP3v_P5DKRjJcWgPv-_pgV24KKHfd7iUukk2nTIAKiUeWW_xgVTekU9Am3weJCYMif6sOOH9cIefgLnb6DcAs-QIf-RnlNe-MGIqZE2Eii51r1z20ApBshJutpW1_m4g==" frameborder="0" scrolling="auto" allowfullscreen style="display: block;margin-left: auto;margin-right: auto;max-width: 100%;"></iframe>
-                <!-- END PLACEHOLDER -->
-                
             </div>
         </div>
     </section>
 
-    <!-- ========================================
-         ABOUT SECTION
-         ======================================== -->
     <section class="about" id="about">
         <div class="section">
             <h2 class="section-title">What is Two Tons of Fun?</h2>
-            <!--p class="section-subtitle">The party where EVERY body is welcome!</p-->
-            
             <div class="about-content">
                 <p class="about-text">
-                    <!-- ✏️ EDIT THIS TEXT TO DESCRIBE YOUR NIGHT! -->
                     Since its inception in 2021, Two Tons of Fun has been standing by its mission statement: creating a <b>safe and inclusive space for chubs, chasers and admirers</b> who want to party and have a good time. 
                     <br>Named after <b>the iconic duo "The Weather Girls"</b>, we have been prouding ourselves in making the club night the ultimate celebration of body positivity, pop music, 
                     and unforgettable vibes. 
@@ -719,7 +372,6 @@
                     <br><h3>Chub? Chasers? Big? Small? You're all welcome!</h3>
                 </p>
             </div>
-
             <div class="features">
                 <div class="feature-card">
                     <div class="feature-icon">🎵</div>
@@ -740,9 +392,6 @@
         </div>
     </section>
 
-    <!-- ========================================
-         FOOTER
-         ======================================== -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -750,32 +399,24 @@
                 <p>London's most body-positive club night!</p>
                 <p>Where every body is welcome. 💖</p>
             </div>
-            
             <div class="footer-section">
                 <h4>Follow Us!</h4>
                 <p>Stay connected for the latest updates!</p>
                 <div class="social-links">
-    <a href="https://www.instagram.com/two_tons_of_fun/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.facebook.com/TwoTonsOfFunLDN/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-</div>
+                    <a href="https://www.instagram.com/two_tons_of_fun/" aria-label="Instagram" data-track="social-instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/TwoTonsOfFunLDN/" aria-label="Facebook" data-track="social-facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
             </div>
-            
             <div class="footer-section">
                 <h4>Contact</h4>
-                <!-- ✏️ ADD YOUR EMAIL HERE -->
                 <p>📧 team@twotonsoffun.co.uk</p>
-            
             </div>
         </div>
-        
         <div class="footer-bottom">
             <p>© 2025 Two Tons of Fun. Made with 💖</p>
         </div>
     </footer>
 
-    <!-- ========================================
-         INSTALL APP PROMPT
-         ======================================== -->
     <div class="install-prompt" id="installPrompt">
         <h4>📱 Install Our App!</h4>
         <p>Add Two Tons of Fun to your home screen for the best experience and push notifications!</p>
@@ -785,67 +426,154 @@
         </div>
     </div>
 
-    <!-- ========================================
-         JAVASCRIPT
-         ======================================== -->
     <script>
-        // Mobile menu toggle
+        // --- 1. CONFIGURATION ---
+        const CONFIG = {
+            oneSignal: {
+                firstVisitDelay: 4000,      // 4 seconds
+                returnVisitDelay: 2000,     // 2 seconds
+                backoffDays: 7              // Wait 7 days if denied/shown recently
+            },
+            pwa: {
+                delayAfterOneSignal: 5000,  // 5 seconds after OneSignal
+                backoffDays: 7              // Wait 7 days if "Not Now" clicked
+            }
+        };
+
+        // --- 2. TRACKING (MANUAL GA4) ---
+        // Updated to use gtag() directly
+        function trackEvent(eventName, params = {}) {
+            if (typeof gtag === 'function') {
+                gtag('event', eventName, params);
+                console.log(`Tracking: ${eventName}`, params);
+            } else {
+                console.log(`Simulated Track: ${eventName}`, params);
+            }
+        }
+
+        // Track clicks on any element with 'data-track' attribute
+        document.addEventListener('click', (e) => {
+            const trackable = e.target.closest('[data-track]');
+            if (trackable) {
+                const action = trackable.getAttribute('data-track');
+                const isOutbound = trackable.hostname && trackable.hostname !== window.location.hostname;
+                
+                trackEvent('click_engagement', {
+                    element_id: action,
+                    is_outbound: isOutbound,
+                    destination: trackable.href || 'internal'
+                });
+            }
+        });
+
+
+        // --- 3. UI FUNCTIONS ---
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('active');
         }
 
-        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Track section view manually since it's an SPA
+                    trackEvent('section_view', { section: this.getAttribute('href') });
                 }
-                // Close mobile menu if open
                 document.getElementById('navLinks').classList.remove('active');
             });
         });
 
-        // Update active nav link on scroll
+        // Highlight Active Link on Scroll
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-links a');
-            
             let current = '';
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (scrollY >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
+                if (scrollY >= section.offsetTop - 100) current = section.getAttribute('id');
             });
-
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
+                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
             });
         });
 
-        // PWA Install Prompt
+
+        // --- 4. SMART PROMPT LOGIC ---
+        function hasPassedDays(timestamp, days) {
+            if (!timestamp) return true;
+            const difference = Date.now() - parseInt(timestamp);
+            return difference > (days * 24 * 60 * 60 * 1000);
+        }
+
+        function initSmartPrompts() {
+            const hasVisited = localStorage.getItem('ttof_has_visited');
+            let osDelay = hasVisited ? CONFIG.oneSignal.returnVisitDelay : CONFIG.oneSignal.firstVisitDelay;
+            localStorage.setItem('ttof_has_visited', 'true');
+
+            console.log(`User status: ${hasVisited ? 'Returning' : 'First Visit'}. Waiting ${osDelay}ms.`);
+            setTimeout(tryOneSignalPrompt, osDelay);
+        }
+
+        function tryOneSignalPrompt() {
+            window.OneSignalDeferred = window.OneSignalDeferred || [];
+            OneSignalDeferred.push(function(OneSignal) {
+                // 1. Check Subscription
+                if (OneSignal.User.PushSubscription.optedIn) {
+                    startAppInstallTimer();
+                    return;
+                }
+                // 2. Check 7-Day Backoff
+                const lastShown = localStorage.getItem('ttof_os_last_shown');
+                if (!hasPassedDays(lastShown, CONFIG.oneSignal.backoffDays)) {
+                    console.log("OneSignal backoff active. Skipping.");
+                    startAppInstallTimer();
+                    return;
+                }
+                // 3. Show
+                console.log("Showing OneSignal Prompt...");
+                OneSignal.Slidedown.promptPush();
+                localStorage.setItem('ttof_os_last_shown', Date.now().toString());
+                
+                // 4. Queue App Install
+                startAppInstallTimer();
+            });
+        }
+
+        function startAppInstallTimer() {
+            setTimeout(tryAppInstallPrompt, CONFIG.pwa.delayAfterOneSignal);
+        }
+
+        // --- 5. PWA LOGIC ---
         let deferredPrompt;
-        
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            // Show install prompt after 30 seconds
-            setTimeout(() => {
-                if (deferredPrompt) {
-                    document.getElementById('installPrompt').style.display = 'block';
-                }
-            }, 7000);
+            console.log("App install eligible.");
         });
+
+        function tryAppInstallPrompt() {
+            if (!deferredPrompt) return;
+            
+            const lastDismissed = localStorage.getItem('ttof_pwa_dismissed');
+            if (!hasPassedDays(lastDismissed, CONFIG.pwa.backoffDays)) {
+                console.log("App install backoff active.");
+                return;
+            }
+            document.getElementById('installPrompt').style.display = 'block';
+            trackEvent('pwa_prompt_shown');
+        }
 
         function installApp() {
             if (deferredPrompt) {
                 deferredPrompt.prompt();
                 deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        trackEvent('pwa_install_accepted');
+                    } else {
+                        trackEvent('pwa_install_dismissed');
+                    }
                     deferredPrompt = null;
                     document.getElementById('installPrompt').style.display = 'none';
                 });
@@ -854,21 +582,28 @@
 
         function dismissInstall() {
             document.getElementById('installPrompt').style.display = 'none';
+            localStorage.setItem('ttof_pwa_dismissed', Date.now().toString());
+            trackEvent('pwa_install_dismissed_notnow');
         }
 
-        // Register Service Worker for PWA & Push Notifications
+        // --- 6. INITIALIZATION ---
+        // Register Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('service-worker.js')
-                    .then(registration => {
-                        console.log('ServiceWorker registered successfully');
-                    })
-                    .catch(error => {
-                        console.log('ServiceWorker registration failed:', error);
-                    });
+                navigator.serviceWorker.register('service-worker.js');
             });
         }
-    </script>
 
+        // Start Chain: Listen for Cookiebot
+        window.addEventListener('CookiebotOnAccept', () => initSmartPrompts());
+        window.addEventListener('CookiebotOnDecline', () => initSmartPrompts());
+        
+        // Return visitor safety check
+        window.addEventListener('load', function() {
+            if (typeof Cookiebot !== 'undefined' && Cookiebot.consented) {
+                initSmartPrompts();
+            }
+        });
+    </script>
 </body>
 </html>
