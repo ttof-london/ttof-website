@@ -570,14 +570,13 @@
         }
     </style>
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
   window.OneSignalDeferred = window.OneSignalDeferred || [];
   OneSignalDeferred.push(async function(OneSignal) {
     await OneSignal.init({
       appId: "4479fcc3-595f-422f-8e20-e5621f971d1f",
-      serviceWorkerParam: { scope: "/push/onesignal/" },
-      serviceWorkerPath: "push/onesignal/OneSignalSDKWorker.js"
+      serviceWorkerParam: { scope: "/" },
+      serviceWorkerPath: "service-worker.js"
     });
   });
 </script>
@@ -840,7 +839,7 @@
                 if (deferredPrompt) {
                     document.getElementById('installPrompt').style.display = 'block';
                 }
-            }, 30000);
+            }, 7000);
         });
 
         function installApp() {
