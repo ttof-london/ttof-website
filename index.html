@@ -3,9 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Two Tons of Fun - The ultimate club night experience. Get tickets, join the fun!">
     <meta name="theme-color" content="#E85A71">
+
     <title>Two Tons of Fun - London's BIGGEST body positive POP night for chubs, chasers and admirers</title>
+    
+    <meta name="description" content="The ultimate body-positive club night in London for chubs, chasers, and admirers. Pop anthems, safe space, and pure joy! Get tickets now.">
+    
+    <link rel="canonical" href="https://www.twotonsoffun.co.uk/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.twotonsoffun.co.uk/">
+    <meta property="og:title" content="Two Tons of Fun | London's BIGGEST Chub & Chaser Night">
+    <meta property="og:description" content="The ultimate body-positive club night for chubs, chasers & admirers. Pop anthems, great vibes, and pure joy!">
+    <meta property="og:image" content="https://www.twotonsoffun.co.uk/TTOF-main-logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Two Tons of Fun | London's Chub & Chaser Party">
+    <meta name="twitter:description" content="The ultimate body-positive club night for chubs, chasers & admirers.">
+    <meta name="twitter:image" content="https://www.twotonsoffun.co.uk/TTOF-main-logo.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EventSeries",
+      "name": "Two Tons of Fun",
+      "description": "London's biggest body-positive club night for chubs, chasers, and admirers.",
+      "url": "https://www.twotonsoffun.co.uk",
+      "image": "https://www.twotonsoffun.co.uk/TTOF-main-logo.png",
+      "location": {
+        "@type": "Place",
+        "name": "London",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "London",
+          "addressCountry": "UK"
+        }
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "Two Tons of Fun",
+        "url": "https://www.twotonsoffun.co.uk"
+      },
+      "keywords": "Club Night, LGBTQ, Chub, Chaser, Body Positive, London Party, Pop Music"
+    }
+    </script>
 
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" 
         data-cbid="b09a50c8-5ce6-473d-a771-89d29c5f0567" 
@@ -19,8 +60,6 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
-      // Initialize GA4
       gtag('config', 'G-XJNW27P81X', { 'send_page_view': true });
     </script>
 
@@ -39,7 +78,6 @@
           // Auto Prompt DISABLED so we can control it with our script below
         });
         
-        // Tracking: Subscription Change
         OneSignal.User.PushSubscription.addEventListener("change", function(event) {
             if (event.current.optedIn) {
                 console.log("OneSignal: Subscribed!");
@@ -47,13 +85,11 @@
             }
         });
 
-        // Tracking: Dismissal
         OneSignal.Slidedown.addEventListener("slidedownDismissed", function(wasShown) {
             console.log("OneSignal: Dismissed");
             trackEvent('os_notification_dismissed');
         });
 
-        // Tracking: Shown
         OneSignal.Slidedown.addEventListener("slidedownShown", function(wasShown) {
             console.log("OneSignal: Shown");
             trackEvent('os_notification_shown');
@@ -99,6 +135,19 @@
             font-family: 'Quicksand', sans-serif;
             font-weight: 700;
         }
+        
+        /* Utility for Invisible H1 (SEO Essential) */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
 
         /* ========================================
            NAVIGATION
@@ -119,7 +168,6 @@
 
         .nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
 
-        /* Standard Text Links */
         .nav-links a:not(.nav-social-link) {
             text-decoration: none;
             color: var(--color-brown);
@@ -141,7 +189,6 @@
             color: var(--color-white);
         }
 
-        /* NEW: Social Icons in Nav */
         .nav-social-link {
             display: flex;
             align-items: center;
@@ -350,7 +397,6 @@
             .hero-buttons { flex-direction: column; width: 100%; padding: 0 20px; }
             .btn { width: 100%; justify-content: center; }
             
-            /* Mobile Nav specific adjustments */
             .nav-social-link {
                 width: 45px;
                 height: 45px;
@@ -362,8 +408,10 @@
 <body>
     
     <nav class="nav">
-        <img src="TTOF-main-logo.png" alt="Two Tons of Fun" class="nav-logo">
-        <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+        <a href="#home" aria-label="Two Tons of Fun Home">
+            <img src="TTOF-main-logo.png" alt="Two Tons of Fun Logo" class="nav-logo">
+        </a>
+        <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle Menu">☰</button>
         <ul class="nav-links" id="navLinks">
             <li><a href="#home" class="active" data-track="nav-home">Home</a></li>
             <li><a href="#tickets" data-track="nav-tickets">Tickets</a></li>
@@ -392,6 +440,8 @@
     </nav>
 
     <section class="hero" id="home">
+        <h1 class="sr-only">Two Tons of Fun: London's Chub, Chaser, & Admirer Club Night</h1>
+        
         <img src="TTOF-main-logo.png" alt="Two Tons of Fun" class="hero-logo">
         <p class="hero-tagline">London's most body-positive club night for all the Chubs, Chasers & anything in-between! 🎉</p>
         <div class="hero-buttons">
@@ -523,7 +573,6 @@
         };
 
         // --- 2. TRACKING (MANUAL GA4) ---
-        // Helper to send events to GA4
         function trackEvent(eventName, params = {}) {
             if (typeof gtag === 'function') {
                 gtag('event', eventName, params);
@@ -533,7 +582,6 @@
             }
         }
 
-        // Helper to send VIRTUAL PAGE VIEWS
         function trackPageView(urlPath) {
             if (typeof gtag === 'function') {
                 gtag('event', 'page_view', {
@@ -545,7 +593,6 @@
             }
         }
 
-        // Track clicks on any element with 'data-track' attribute
         document.addEventListener('click', (e) => {
             const trackable = e.target.closest('[data-track]');
             if (trackable) {
@@ -560,7 +607,6 @@
             }
         });
 
-
         // --- 3. UI FUNCTIONS ---
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('active');
@@ -572,9 +618,6 @@
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    
-                    // --- TRACKING FIX: Virtual Page View ---
-                    // When clicking menu, we record it as a page view event
                     const path = this.getAttribute('href'); 
                     trackEvent('section_view', { section: path });
                     trackPageView(path); 
@@ -583,7 +626,6 @@
             });
         });
 
-        // Highlight Active Link on Scroll
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-links a');
@@ -597,7 +639,6 @@
             });
         });
 
-
         // --- 4. SMART PROMPT LOGIC ---
         function hasPassedDays(timestamp, days) {
             if (!timestamp) return true;
@@ -609,38 +650,28 @@
             const hasVisited = localStorage.getItem('ttof_has_visited');
             let osDelay = hasVisited ? CONFIG.oneSignal.returnVisitDelay : CONFIG.oneSignal.firstVisitDelay;
             localStorage.setItem('ttof_has_visited', 'true');
-
             console.log(`User status: ${hasVisited ? 'Returning' : 'First Visit'}. Waiting ${osDelay}ms.`);
             setTimeout(tryOneSignalPrompt, osDelay);
         }
 
         function tryOneSignalPrompt() {
-            // Check if OneSignal is loaded (since we blocked it with Cookiebot)
-            if (typeof OneSignalDeferred === 'undefined') {
-                console.log("OneSignal not loaded yet (waiting for consent).");
-                return;
-            }
+            if (typeof OneSignalDeferred === 'undefined') return;
 
             window.OneSignalDeferred = window.OneSignalDeferred || [];
             OneSignalDeferred.push(function(OneSignal) {
-                // 1. Check Subscription
                 if (OneSignal.User.PushSubscription.optedIn) {
                     startAppInstallTimer();
                     return;
                 }
-                // 2. Check 7-Day Backoff
                 const lastShown = localStorage.getItem('ttof_os_last_shown');
                 if (!hasPassedDays(lastShown, CONFIG.oneSignal.backoffDays)) {
                     console.log("OneSignal backoff active. Skipping.");
                     startAppInstallTimer();
                     return;
                 }
-                // 3. Show
                 console.log("Requesting OneSignal Prompt...");
                 OneSignal.Slidedown.promptPush();
                 localStorage.setItem('ttof_os_last_shown', Date.now().toString());
-                
-                // 4. Queue App Install
                 startAppInstallTimer();
             });
         }
@@ -659,23 +690,18 @@
 
         function tryAppInstallPrompt() {
             if (!deferredPrompt) return;
-            
             const lastDismissed = localStorage.getItem('ttof_pwa_dismissed');
             if (!hasPassedDays(lastDismissed, CONFIG.pwa.backoffDays)) {
                 console.log("App install backoff active.");
                 return;
             }
             document.getElementById('installPrompt').style.display = 'block';
-            
-            // --- TRACKING: Impression ---
             trackEvent('pwa_prompt_shown');
         }
 
         function installApp() {
             if (deferredPrompt) {
-                // --- TRACKING: Click Yes ---
                 trackEvent('pwa_install_click_yes');
-                
                 deferredPrompt.prompt();
                 deferredPrompt.userChoice.then((choiceResult) => {
                     if (choiceResult.outcome === 'accepted') {
@@ -690,26 +716,21 @@
         }
 
         function dismissInstall() {
-            // --- TRACKING: Click No ---
             trackEvent('pwa_install_click_no');
-            
             document.getElementById('installPrompt').style.display = 'none';
             localStorage.setItem('ttof_pwa_dismissed', Date.now().toString());
         }
 
         // --- 6. INITIALIZATION ---
-        // Register Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('service-worker.js');
             });
         }
 
-        // Start Chain: Listen for Cookiebot
         window.addEventListener('CookiebotOnAccept', () => initSmartPrompts());
         window.addEventListener('CookiebotOnDecline', () => initSmartPrompts());
         
-        // Return visitor safety check
         window.addEventListener('load', function() {
             if (typeof Cookiebot !== 'undefined' && Cookiebot.consented) {
                 initSmartPrompts();
