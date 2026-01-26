@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.twotonsoffun.co.uk/sitemap.xml
