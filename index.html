@@ -189,16 +189,17 @@
             color: var(--color-white);
         }
 
+        /* NEW: Get the App button styling */
         .nav-app-link {
             background: var(--color-yellow) !important;
             color: var(--color-brown) !important;
             border: 2px solid var(--color-brown);
+            cursor: pointer;
         }
         
         .nav-app-link:hover {
             background: var(--color-brown) !important;
             color: var(--color-white) !important;
-            border-color: var(--color-brown);
         }
 
         .nav-social-link {
@@ -429,7 +430,7 @@
             <li><a href="#tickets" data-track="nav-tickets">Tickets</a></li>
             <li><a href="#newsletter" data-track="nav-newsletter">Newsletter</a></li>
             <li><a href="#about" data-track="nav-about">About Two Tons of Fun</a></li>
-            <li><a href="javascript:void(0)" class="nav-app-link" data-track="nav-get-app" onclick="triggerAppInstall(event)">📱 Get the App</a></li>
+            <li><a href="javascript:void(0)" class="nav-app-link" data-track="nav-get-app" onclick="triggerAppInstall()">📱 Get the App</a></li>
             
             <li>
                 <a href="https://www.instagram.com/two_tons_of_fun/" 
@@ -554,7 +555,7 @@
             </div>
             <div class="footer-section">
                 <h4>Contact</h4>
-                <p>📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b3c7d6d2def3c7c4dcc7dcddc0dcd5d5c6dd9dd0dc9dc6d8">[email&#160;protected]</a></p>
+                <p>📧 team@twotonsoffun.co.uk</p>
             </div>
         </div>
         <div class="footer-bottom">
@@ -571,7 +572,7 @@
         </div>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // --- 1. CONFIGURATION ---
         const CONFIG = {
             oneSignal: {
@@ -627,17 +628,13 @@
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                // Skip if it's just "#" (like the Get App button) or has its own onclick handler
-                if (href === '#' || this.hasAttribute('onclick')) {
-                    return;
-                }
                 e.preventDefault();
-                const target = document.querySelector(href);
+                const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    trackEvent('section_view', { section: href });
-                    trackPageView(href); 
+                    const path = this.getAttribute('href'); 
+                    trackEvent('section_view', { section: path });
+                    trackPageView(path); 
                 }
                 document.getElementById('navLinks').classList.remove('active');
             });
@@ -738,38 +735,26 @@
             localStorage.setItem('ttof_pwa_dismissed', Date.now().toString());
         }
 
-        function triggerAppInstall(event) {
-            event.preventDefault();
-            event.stopPropagation();
+        // --- NEW: Manual trigger for Get the App button ---
+        function triggerAppInstall() {
             trackEvent('nav_get_app_click');
             
             if (deferredPrompt) {
                 // Browser supports PWA install - show the native prompt
-                trackEvent('nav_get_app_pwa_eligible');
+                trackEvent('nav_get_app_pwa_available');
                 deferredPrompt.prompt();
                 deferredPrompt.userChoice.then((choiceResult) => {
                     if (choiceResult.outcome === 'accepted') {
-                        trackEvent('nav_get_app_install_accepted');
+                        trackEvent('nav_get_app_installed');
                     } else {
-                        trackEvent('nav_get_app_install_dismissed');
+                        trackEvent('nav_get_app_dismissed');
                     }
                     deferredPrompt = null;
                 });
             } else {
-                // PWA prompt not available - show custom install overlay with instructions
+                // PWA not available - show the install prompt overlay with instructions
                 trackEvent('nav_get_app_pwa_not_available');
-                const installPrompt = document.getElementById('installPrompt');
-                if (installPrompt) {
-                    // Update the message to be more helpful since native prompt isn't available
-                    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-                    const promptText = installPrompt.querySelector('p');
-                    if (promptText && isIOS) {
-                        promptText.textContent = 'To install: tap the Share button (📤) in Safari, then "Add to Home Screen"';
-                    } else if (promptText) {
-                        promptText.textContent = 'To install: use your browser menu (⋮) and select "Install App" or "Add to Home Screen"';
-                    }
-                    installPrompt.style.display = 'block';
-                }
+                document.getElementById('installPrompt').style.display = 'block';
             }
             
             // Close mobile menu if open
@@ -784,4 +769,13 @@
         }
 
         window.addEventListener('CookiebotOnAccept', () => initSmartPrompts());
-        window.addEventListener('CookiebotOnDecline', () => initSmartPrompt
+        window.addEventListener('CookiebotOnDecline', () => initSmartPrompts());
+        
+        window.addEventListener('load', function() {
+            if (typeof Cookiebot !== 'undefined' && Cookiebot.consented) {
+                initSmartPrompts();
+            }
+        });
+    </script>
+</body>
+</html>
