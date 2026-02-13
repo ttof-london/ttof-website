@@ -7,7 +7,15 @@
     <meta name="theme-color" content="#E85A71">
     
     <title>Merch - Two Tons of Fun</title>
-    
+
+    <link rel="canonical" href="https://twotonsoffun.co.uk/merch.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://twotonsoffun.co.uk/merch.html">
+    <meta property="og:title" content="Official Merch - Two Tons of Fun">
+    <meta property="og:description" content="Two Tons of Fun Official Merch - T-shirts, hoodies and more!">
+    <meta property="og:image" content="https://twotonsoffun.co.uk/TTOF-main-logo.png">
+
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="TTOF-main-logo.png">
     
@@ -212,6 +220,17 @@
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--color-white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+            .nav-links.active {
+                display: flex;
             }
             .mobile-menu-btn {
                 display: block;
@@ -225,11 +244,11 @@
 <body>
 
     <nav class="nav">
-        <a href="index.html">
-            <img src="TTOF-main-logo.png" alt="Two Tons of Fun" class="nav-logo">
+        <a href="index.html" aria-label="Two Tons of Fun Home">
+            <img src="TTOF-main-logo.png" alt="Two Tons of Fun" class="nav-logo" width="50" height="50">
         </a>
-        <button class="mobile-menu-btn">☰</button>
-        <ul class="nav-links">
+        <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle Menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+        <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Home</a></li>
             <li><a href="index.html#about">About</a></li>
             <li><a href="index.html#tickets">Tickets</a></li>
@@ -304,8 +323,30 @@
     </main>
 
     <footer class="footer">
-        <p>© 2025 Two Tons of Fun. Made with 💖</p>
+        <p>&copy; 2025 Two Tons of Fun. Made with 💖</p>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            var navLinks = document.getElementById('navLinks');
+            var menuBtn = document.querySelector('.mobile-menu-btn');
+            navLinks.classList.toggle('active');
+            var isOpen = navLinks.classList.contains('active');
+            menuBtn.setAttribute('aria-expanded', isOpen);
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                var navLinks = document.getElementById('navLinks');
+                var menuBtn = document.querySelector('.mobile-menu-btn');
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                    menuBtn.focus();
+                }
+            }
+        });
+    </script>
 
 </body>
 </html>
