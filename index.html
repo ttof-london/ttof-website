@@ -189,6 +189,18 @@
             color: var(--color-white);
         }
 
+        .nav-app-link {
+            background: var(--color-yellow) !important;
+            color: var(--color-brown) !important;
+            border: 2px solid var(--color-brown);
+        }
+        
+        .nav-app-link:hover {
+            background: var(--color-brown) !important;
+            color: var(--color-white) !important;
+            border-color: var(--color-brown);
+        }
+
         .nav-social-link {
             display: flex;
             align-items: center;
@@ -416,7 +428,8 @@
             <li><a href="#home" class="active" data-track="nav-home">Home</a></li>
             <li><a href="#tickets" data-track="nav-tickets">Tickets</a></li>
             <li><a href="#newsletter" data-track="nav-newsletter">Newsletter</a></li>
-            <li><a href="#about" data-track="nav-about">About TToF</a></li>
+            <li><a href="#about" data-track="nav-about">About Two Tons of Fun</a></li>
+            <li><a href="#" class="nav-app-link" data-track="nav-get-app" onclick="triggerAppInstall(event)">📱 Get the App</a></li>
             
             <li>
                 <a href="https://www.instagram.com/two_tons_of_fun/" 
@@ -541,7 +554,7 @@
             </div>
             <div class="footer-section">
                 <h4>Contact</h4>
-                <p>📧 team@twotonsoffun.co.uk</p>
+                <p>📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b3c7d6d2def3c7c4dcc7dcddc0dcd5d5c6dd9dd0dc9dc6d8">[email&#160;protected]</a></p>
             </div>
         </div>
         <div class="footer-bottom">
@@ -558,7 +571,7 @@
         </div>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // --- 1. CONFIGURATION ---
         const CONFIG = {
             oneSignal: {
@@ -721,6 +734,47 @@
             localStorage.setItem('ttof_pwa_dismissed', Date.now().toString());
         }
 
+        function triggerAppInstall(event) {
+            event.preventDefault();
+            trackEvent('nav_get_app_click');
+            
+            if (deferredPrompt) {
+                // Browser supports PWA install - show the native prompt
+                trackEvent('nav_get_app_pwa_eligible');
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        trackEvent('nav_get_app_install_accepted');
+                    } else {
+                        trackEvent('nav_get_app_install_dismissed');
+                    }
+                    deferredPrompt = null;
+                });
+            } else {
+                // PWA not available - show our custom install prompt or instructions
+                trackEvent('nav_get_app_pwa_not_available');
+                const installPrompt = document.getElementById('installPrompt');
+                if (installPrompt) {
+                    installPrompt.style.display = 'block';
+                } else {
+                    // Fallback: show instructions based on device
+                    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+                    const isAndroid = /Android/.test(navigator.userAgent);
+                    
+                    if (isIOS) {
+                        alert('To install the app on iOS:\n\n1. Tap the Share button (📤) in Safari\n2. Scroll down and tap "Add to Home Screen"\n3. Tap "Add" to confirm');
+                    } else if (isAndroid) {
+                        alert('To install the app:\n\n1. Tap the menu (⋮) in your browser\n2. Tap "Add to Home Screen" or "Install App"\n3. Confirm the installation');
+                    } else {
+                        alert('To install the app, look for the install icon in your browser\'s address bar, or use your browser\'s menu to "Install" or "Add to Home Screen".');
+                    }
+                }
+            }
+            
+            // Close mobile menu if open
+            document.getElementById('navLinks').classList.remove('active');
+        }
+
         // --- 6. INITIALIZATION ---
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -729,13 +783,4 @@
         }
 
         window.addEventListener('CookiebotOnAccept', () => initSmartPrompts());
-        window.addEventListener('CookiebotOnDecline', () => initSmartPrompts());
-        
-        window.addEventListener('load', function() {
-            if (typeof Cookiebot !== 'undefined' && Cookiebot.consented) {
-                initSmartPrompts();
-            }
-        });
-    </script>
-</body>
-</html>
+        window.addEventListener('CookiebotOnDecline', () => initSmartPrompt
