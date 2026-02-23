@@ -13,13 +13,13 @@
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://twotonsoffun.co.uk/">
-    <meta property="og:title" content="Two Tons of Fun | London's BIGGEST Chub & Chaser Night">
-    <meta property="og:description" content="The ultimate body-positive club night for chubs, chasers & admirers. Pop anthems, great vibes, and pure joy!">
+    <meta property="og:title" content="Two Tons of Fun | London's BIGGEST Chub &amp; Chaser Night">
+    <meta property="og:description" content="The ultimate body-positive club night for chubs, chasers &amp; admirers. Pop anthems, great vibes, and pure joy!">
     <meta property="og:image" content="https://twotonsoffun.co.uk/TTOF-main-logo.png">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Two Tons of Fun | London's Chub & Chaser Party">
-    <meta name="twitter:description" content="The ultimate body-positive club night for chubs, chasers & admirers.">
+    <meta name="twitter:title" content="Two Tons of Fun | London's Chub &amp; Chaser Party">
+    <meta name="twitter:description" content="The ultimate body-positive club night for chubs, chasers &amp; admirers.">
     <meta name="twitter:image" content="https://twotonsoffun.co.uk/TTOF-main-logo.png">
 
     <script type="application/ld+json">
@@ -120,6 +120,75 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        /* =====================================================
+           MARKETING RIBBON
+        ===================================================== */
+        .event-ribbon {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1100;
+            background: var(--color-pink);
+            color: var(--color-white);
+            overflow: hidden;
+            height: 38px;
+            display: flex;
+            align-items: center;
+        }
+
+        .event-ribbon a {
+            color: var(--color-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .ribbon-track {
+            display: flex;
+            white-space: nowrap;
+            animation: ribbonScroll 60s linear infinite;
+            align-items: center;
+        }
+
+        .ribbon-track:hover {
+            animation-play-state: paused;
+        }
+
+        .ribbon-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0 40px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            font-family: 'Quicksand', sans-serif;
+            letter-spacing: 0.3px;
+        }
+
+        .ribbon-item .ribbon-dot {
+            display: inline-block;
+            width: 6px; height: 6px;
+            background: var(--color-yellow);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .ribbon-item .ribbon-cta {
+            background: var(--color-white);
+            color: var(--color-pink);
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-left: 6px;
+            white-space: nowrap;
+        }
+
+        @keyframes ribbonScroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
         body {
             font-family: 'Quicksand', sans-serif;
             background-color: var(--color-white);
@@ -147,7 +216,7 @@
 
         .nav {
             position: fixed;
-            top: 0; left: 0; right: 0;
+            top: 38px; left: 0; right: 0;
             background: var(--color-white);
             padding: 15px 30px;
             display: flex;
@@ -229,7 +298,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 120px 20px 60px;
+            padding: 158px 20px 60px;
             background: var(--color-white);
             position: relative;
             overflow: hidden;
@@ -337,6 +406,77 @@
             border-radius: 20px; padding: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.2);
         }
 
+        /* =====================================================
+           MERCH SECTION
+        ===================================================== */
+        .merch {
+            background: linear-gradient(135deg, var(--color-yellow) 0%, var(--color-cream) 100%);
+            padding: 80px 20px;
+        }
+
+        .merch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .merch-card {
+            background: var(--color-white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.09);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: var(--color-black);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .merch-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(232,90,113,0.2);
+        }
+
+        .merch-card-img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            display: block;
+            background: #f9f4ef;
+        }
+
+        .merch-card-body {
+            padding: 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .merch-card-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--color-brown);
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .merch-card-price {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-pink);
+        }
+
+        .merch-cta-wrap {
+            text-align: center;
+            margin-top: 10px;
+        }
+
         .footer { background: var(--color-brown); color: var(--color-white); padding: 60px 20px 30px; }
         .footer-content {
             max-width: 1200px; margin: 0 auto; display: grid;
@@ -389,17 +529,34 @@
             .hero-logo { max-width: 280px; }
             .hero-buttons { flex-direction: column; width: 100%; padding: 0 20px; }
             .btn { width: 100%; justify-content: center; }
-            
-            .nav-social-link {
-                width: 45px;
-                height: 45px;
-                margin-top: 10px;
-            }
+            .nav-social-link { width: 45px; height: 45px; margin-top: 10px; }
+            .merch-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
         }
     </style>
 </head>
 <body>
-    
+
+    <!-- MARKETING RIBBON -->
+    <div class="event-ribbon" role="banner" aria-label="Upcoming events">
+        <a href="https://link.outsavvy.com/twotonsoffun?utm_source=website&utm_medium=referral&utm_campaign=website-ticket-link-ribbon" 
+           target="_blank" rel="noopener noreferrer" data-track="ribbon-tickets">
+            <div class="ribbon-track" aria-hidden="true">
+                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+            </div>
+        </a>
+    </div>
+
     <nav class="nav">
         <a href="#home" aria-label="Two Tons of Fun Home">
             <img src="TTOF-main-logo.png" alt="Two Tons of Fun Logo" class="nav-logo" width="50" height="50">
@@ -409,24 +566,21 @@
             <li><a href="#home" class="active" data-track="nav-home">Home</a></li>
             <li><a href="#tickets" data-track="nav-tickets">Tickets</a></li>
             <li><a href="#newsletter" data-track="nav-newsletter">Newsletter</a></li>
+            <li><a href="#merch" data-track="nav-merch">Merch</a></li>
             <li><a href="#about" data-track="nav-about">About Two Tons of Fun</a></li>
+            <li><a href="javascript:void(0)" class="nav-app-link" data-track="nav-notifications" onclick="triggerNotificationsPrompt()">🔔 Sign Up to Notifications</a></li>
             <li><a href="javascript:void(0)" class="nav-app-link" data-track="nav-get-app" onclick="triggerAppInstall()">📱 Get the App</a></li>
-            
             <li>
                 <a href="https://www.instagram.com/two_tons_of_fun/" 
-                   class="nav-social-link"
-                   aria-label="Instagram" 
-                   data-track="nav-social-instagram" 
-                   target="_blank" rel="noopener noreferrer">
+                   class="nav-social-link" aria-label="Instagram" 
+                   data-track="nav-social-instagram" target="_blank" rel="noopener noreferrer">
                    <i class="fab fa-instagram"></i>
                 </a>
             </li>
             <li>
                 <a href="https://www.facebook.com/TwoTonsOfFunLDN/" 
-                   class="nav-social-link"
-                   aria-label="Facebook" 
-                   data-track="nav-social-facebook" 
-                   target="_blank" rel="noopener noreferrer">
+                   class="nav-social-link" aria-label="Facebook" 
+                   data-track="nav-social-facebook" target="_blank" rel="noopener noreferrer">
                    <i class="fab fa-facebook-f"></i>
                 </a>
             </li>
@@ -434,14 +588,12 @@
     </nav>
 
     <section class="hero" id="home">
-        <h1 class="sr-only">Two Tons of Fun: London's Chub, Chaser, & Admirer Club Night</h1>
-        
+        <h1 class="sr-only">Two Tons of Fun: London's Chub, Chaser, &amp; Admirer Club Night</h1>
         <img src="TTOF-main-logo.png" alt="Two Tons of Fun" class="hero-logo" width="400" height="400" fetchpriority="high">
-        <p class="hero-tagline">London's most body-positive club night for all the Chubs, Chasers & anything in-between! 🎉</p>
+        <p class="hero-tagline">London's most body-positive club night for all the Chubs, Chasers &amp; anything in-between! 🎉</p>
         <div class="hero-buttons">
             <a href="https://link.outsavvy.com/twotonsoffun?utm_source=website&utm_medium=referral&utm_campaign=website-ticket-link" 
-               class="btn btn-primary" 
-               data-track="hero-buy-tickets"
+               class="btn btn-primary" data-track="hero-buy-tickets"
                target="_blank" rel="noopener noreferrer">
                 🎟️ Get Tickets
             </a>
@@ -473,9 +625,52 @@
     <section class="newsletter" id="newsletter">
         <div class="section">
             <h2 class="section-title">Stay in the Loop!</h2>
-            <p class="section-subtitle">Be the first to know about events, early bird tickets & exclusive offers</p>
+            <p class="section-subtitle">Be the first to know about events, early bird tickets &amp; exclusive offers</p>
             <div class="newsletter-container">
                 <iframe width="540" height="700" src="https://64e25386.sibforms.com/serve/MUIFAGw8aUGNjrjUYCrZq-6_KQcFuESTjB8C-ka0B516sRoeH6nGpCoDhtpWnpQr5ELLj9cqXfbppvFUMRgP3v_P5DKRjJcWgPv-_pgV24KKHfd7iUukk2nTIAKiUeWW_xgVTekU9Am3weJCYMif6sOOH9cIefgLnb6DcAs-QIf-RnlNe-MGIqZE2Eii51r1z20ApBshJutpW1_m4g==" frameborder="0" scrolling="auto" allowfullscreen loading="lazy" title="Newsletter signup form" style="display: block;margin-left: auto;margin-right: auto;max-width: 100%;"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- MERCH SECTION -->
+    <section class="merch" id="merch">
+        <div class="section">
+            <h2 class="section-title">Official Merch 👕</h2>
+            <p class="section-subtitle">Rep your favourite chub &amp; chaser night — tees, caps, pins &amp; more through our amazing partner KWEEN!</p>
+            <div class="merch-grid">
+                <a class="merch-card" href="https://kween.shop/products/two-tons-of-fun-unisex-classic-tee?variant=52609193705813" target="_blank" rel="noopener noreferrer" data-track="merch-classic-tee">
+                    <img class="merch-card-img" src="https://kween.shop/cdn/shop/files/unisex-classic-tee-black-front-6998fa8067493.png?v=1771633297&width=600" alt="Two Tons of Fun Unisex Classic Tee" loading="lazy">
+                    <div class="merch-card-body">
+                        <div class="merch-card-name">Unisex Classic Tee</div>
+                        <div class="merch-card-price">£15.00</div>
+                    </div>
+                </a>
+                <a class="merch-card" href="https://kween.shop/products/two-tons-of-fun-mens-tank-top?variant=52609189249365" target="_blank" rel="noopener noreferrer" data-track="merch-tank-top">
+                    <img class="merch-card-img" src="https://kween.shop/cdn/shop/files/mens-staple-tank-top-black-front-6998f93473688.png?v=1771632969&width=600" alt="Two Tons of Fun Men's Tank Top" loading="lazy">
+                    <div class="merch-card-body">
+                        <div class="merch-card-name">Men's Tank Top</div>
+                        <div class="merch-card-price">£19.00</div>
+                    </div>
+                </a>
+                <a class="merch-card" href="https://kween.shop/products/two-tons-of-fun-embroidery-trucker-cap?variant=52609393426773" target="_blank" rel="noopener noreferrer" data-track="merch-trucker-cap">
+                    <img class="merch-card-img" src="https://kween.shop/cdn/shop/files/retro-trucker-hat-black-white-front-69990279e73cb.jpg?v=1771635333&width=600" alt="Two Tons of Fun Embroidery Trucker Cap" loading="lazy">
+                    <div class="merch-card-body">
+                        <div class="merch-card-name">Embroidery Trucker Cap</div>
+                        <div class="merch-card-price">£19.00</div>
+                    </div>
+                </a>
+                <a class="merch-card" href="https://kween.shop/products/two-tons-of-fun-set-of-pin-buttons?variant=52609255047509" target="_blank" rel="noopener noreferrer" data-track="merch-pin-buttons">
+                    <img class="merch-card-img" src="https://kween.shop/cdn/shop/files/set-of-pin-buttons-white-2.25-front-69990152bac26.jpg?v=1771635044&width=600" alt="Two Tons of Fun Set of Pin Buttons" loading="lazy">
+                    <div class="merch-card-body">
+                        <div class="merch-card-name">Set of Pin Buttons</div>
+                        <div class="merch-card-price">£10.00</div>
+                    </div>
+                </a>
+            </div>
+            <div class="merch-cta-wrap">
+                <a href="https://kween.shop/collections/two-tons-of-fun" class="btn btn-primary" target="_blank" rel="noopener noreferrer" data-track="merch-shop-all">
+                    🛍️ Shop All Merch on kween.shop
+                </a>
             </div>
         </div>
     </section>
@@ -539,7 +734,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 Two Tons of Fun. Made with 💖</p>
+            <p>© 2026 Two Tons of Fun. Made with 💖</p>
         </div>
     </footer>
 
@@ -554,10 +749,9 @@
 
     <script>
         // =====================================================
-        // CRITICAL: These functions must be defined FIRST
-        // so they work immediately when the page loads
+        // CRITICAL: Defined first so available on page load
         // =====================================================
-        
+
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             const menuBtn = document.querySelector('.mobile-menu-btn');
@@ -578,6 +772,59 @@
             }
         });
 
+        // =====================================================
+        // TOAST NOTIFICATION (non-blocking, replaces alert)
+        // =====================================================
+        function showToast(message, duration = 3500) {
+            const existing = document.getElementById('ttof-toast');
+            if (existing) existing.remove();
+            const toast = document.createElement('div');
+            toast.id = 'ttof-toast';
+            toast.textContent = message;
+            toast.style.cssText = [
+                'position:fixed', 'bottom:90px', 'left:50%', 'transform:translateX(-50%)',
+                'background:var(--color-brown)', 'color:var(--color-white)',
+                'padding:12px 24px', 'border-radius:30px',
+                "font-family:'Quicksand',sans-serif", 'font-weight:700', 'font-size:0.95rem',
+                'z-index:99999', 'box-shadow:0 6px 24px rgba(0,0,0,0.25)',
+                'white-space:nowrap', 'pointer-events:none', 'transition:opacity 0.4s'
+            ].join(';');
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 400);
+            }, duration);
+        }
+
+        // =====================================================
+        // NOTIFICATIONS PROMPT
+        // =====================================================
+        function triggerNotificationsPrompt() {
+            trackEvent('nav_notifications_click');
+
+            // Close mobile menu immediately
+            document.getElementById('navLinks').classList.remove('active');
+            document.querySelector('.mobile-menu-btn').setAttribute('aria-expanded', 'false');
+
+            if (typeof OneSignalDeferred === 'undefined') {
+                showToast('Notifications unavailable right now — try again in a moment!');
+                return;
+            }
+
+            OneSignalDeferred.push(function(OneSignal) {
+                if (OneSignal.User.PushSubscription.optedIn) {
+                    showToast('You\'re already subscribed to notifications! 🔔');
+                    trackEvent('nav_notifications_already_subscribed');
+                    return;
+                }
+                trackEvent('nav_notifications_prompt_triggered');
+                OneSignal.Slidedown.promptPush({ force: true });
+            });
+        }
+
+        // =====================================================
+        // APP INSTALL
+        // =====================================================
         function triggerAppInstall() {
             trackEvent('nav_get_app_click');
             
@@ -622,9 +869,9 @@
         function trackEvent(eventName, params = {}) {
             if (typeof gtag === 'function') {
                 gtag('event', eventName, params);
-                console.log(`Tracking Event: ${eventName}`, params);
+                console.log('Tracking Event: ' + eventName, params);
             } else {
-                console.log(`Simulated Track: ${eventName}`, params);
+                console.log('Simulated Track: ' + eventName, params);
             }
         }
 
@@ -635,7 +882,7 @@
                     page_location: window.location.href,
                     page_title: document.title
                 });
-                console.log(`Tracking PageView: ${urlPath}`);
+                console.log('Tracking PageView: ' + urlPath);
             }
         }
 
@@ -644,7 +891,6 @@
             if (trackable) {
                 const action = trackable.getAttribute('data-track');
                 const isOutbound = trackable.hostname && trackable.hostname !== window.location.hostname;
-                
                 trackEvent('click_engagement', {
                     element_id: action,
                     is_outbound: isOutbound,
@@ -654,39 +900,44 @@
         });
 
         // =====================================================
-        // SMOOTH SCROLL - with error handling to prevent breaking
+        // SMOOTH SCROLL — offset-aware for fixed ribbon + nav
+        // ribbon: 38px, nav: ~80px
         // =====================================================
+        const SCROLL_OFFSET = 118;
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
-                
-                // Skip non-section links
-                if (!href || href === '#' || href.length <= 1) {
-                    return;
-                }
-                
+                if (!href || href === '#' || href.length <= 1) return;
                 try {
                     const target = document.querySelector(href);
                     if (target) {
                         e.preventDefault();
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        const top = target.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET;
+                        window.scrollTo({ top: top, behavior: 'smooth' });
                         trackEvent('section_view', { section: href });
-                        trackPageView(href); 
+                        trackPageView(href);
                         document.getElementById('navLinks').classList.remove('active');
                         document.querySelector('.mobile-menu-btn').setAttribute('aria-expanded', 'false');
                     }
                 } catch (err) {
-                    // Invalid selector - ignore silently
+                    // Invalid selector — ignore silently
                 }
             });
         });
 
+        // =====================================================
+        // SCROLL ACTIVE STATE
+        // Excludes .nav-app-link buttons from active highlighting
+        // =====================================================
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-links a');
+            const navLinks = document.querySelectorAll('.nav-links a:not(.nav-app-link)');
             let current = '';
             sections.forEach(section => {
-                if (scrollY >= section.offsetTop - 100) current = section.getAttribute('id');
+                if (window.scrollY >= section.offsetTop - SCROLL_OFFSET - 10) {
+                    current = section.getAttribute('id');
+                }
             });
             navLinks.forEach(link => {
                 link.classList.remove('active');
@@ -707,13 +958,12 @@
             const hasVisited = localStorage.getItem('ttof_has_visited');
             let osDelay = hasVisited ? CONFIG.oneSignal.returnVisitDelay : CONFIG.oneSignal.firstVisitDelay;
             localStorage.setItem('ttof_has_visited', 'true');
-            console.log(`User status: ${hasVisited ? 'Returning' : 'First Visit'}. Waiting ${osDelay}ms.`);
+            console.log('User status: ' + (hasVisited ? 'Returning' : 'First Visit') + '. Waiting ' + osDelay + 'ms.');
             setTimeout(tryOneSignalPrompt, osDelay);
         }
 
         function tryOneSignalPrompt() {
             if (typeof OneSignalDeferred === 'undefined') return;
-
             window.OneSignalDeferred = window.OneSignalDeferred || [];
             OneSignalDeferred.push(function(OneSignal) {
                 if (OneSignal.User.PushSubscription.optedIn) {
@@ -722,11 +972,11 @@
                 }
                 const lastShown = localStorage.getItem('ttof_os_last_shown');
                 if (!hasPassedDays(lastShown, CONFIG.oneSignal.backoffDays)) {
-                    console.log("OneSignal backoff active. Skipping.");
+                    console.log('OneSignal backoff active. Skipping.');
                     startAppInstallTimer();
                     return;
                 }
-                console.log("Requesting OneSignal Prompt...");
+                console.log('Requesting OneSignal Prompt...');
                 OneSignal.Slidedown.promptPush();
                 localStorage.setItem('ttof_os_last_shown', Date.now().toString());
                 startAppInstallTimer();
@@ -744,14 +994,14 @@
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            console.log("App install eligible.");
+            console.log('App install eligible.');
         });
 
         function tryAppInstallPrompt() {
             if (!deferredPrompt) return;
             const lastDismissed = localStorage.getItem('ttof_pwa_dismissed');
             if (!hasPassedDays(lastDismissed, CONFIG.pwa.backoffDays)) {
-                console.log("App install backoff active.");
+                console.log('App install backoff active.');
                 return;
             }
             document.getElementById('installPrompt').style.display = 'block';
@@ -791,7 +1041,7 @@
 
         window.addEventListener('CookiebotOnAccept', () => initSmartPrompts());
         window.addEventListener('CookiebotOnDecline', () => initSmartPrompts());
-        
+
         window.addEventListener('load', function() {
             if (typeof Cookiebot !== 'undefined' && Cookiebot.consented) {
                 initSmartPrompts();
