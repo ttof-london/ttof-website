@@ -146,7 +146,7 @@
         .ribbon-track {
             display: flex;
             white-space: nowrap;
-            animation: ribbonScroll 60s linear infinite;
+            animation: ribbonScroll 28s linear infinite;
             align-items: center;
         }
 
@@ -518,6 +518,9 @@
         .install-btn.yes { background: var(--color-pink); color: var(--color-white); }
         .install-btn.no { background: transparent; color: var(--color-white); border: 1px solid var(--color-white); }
 
+        /* Mobile bottom bar — hidden on desktop */
+        .mobile-bottom-bar { display: none; }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none; position: absolute; top: 100%; left: 0; right: 0;
@@ -527,10 +530,110 @@
             .nav-links.active { display: flex; }
             .mobile-menu-btn { display: block; }
             .hero-logo { max-width: 280px; }
-            .hero-buttons { flex-direction: column; width: 100%; padding: 0 20px; }
+
+            /* Hero buttons hidden on mobile — bottom bar replaces them */
+            .hero-buttons { display: none; }
+
             .btn { width: 100%; justify-content: center; }
             .nav-social-link { width: 45px; height: 45px; margin-top: 10px; }
             .merch-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+            /* Body padding handled at bottom of media query */
+
+            /* ── BOTTOM ACTION BAR ── */
+            /* ── INDIVIDUAL PILLS LAYOUT ── */
+
+            /* Transparent wrapper — just positions the pills */
+            .mobile-bottom-bar {
+                display: flex;
+                position: fixed;
+                bottom: 16px;
+                left: 10px;
+                right: 10px;
+                z-index: 2000;
+                height: auto;
+                align-items: stretch;
+                gap: 8px;
+                background: transparent;
+                box-shadow: none;
+            }
+
+            /* 🎟️ Tickets pill — 50%, tall, pink */
+            .mobile-bar-tickets {
+                flex: 0 0 calc(50% - 4px);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                background: var(--color-pink);
+                color: var(--color-white);
+                font-family: 'Quicksand', sans-serif;
+                font-weight: 700;
+                text-decoration: none;
+                border: none;
+                border-radius: 22px;
+                cursor: pointer;
+                padding: 14px 8px;
+                box-shadow: 0 4px 16px rgba(232,90,113,0.35);
+                transition: background 0.18s, transform 0.15s, box-shadow 0.15s;
+                -webkit-tap-highlight-color: transparent;
+            }
+            .mobile-bar-tickets:active {
+                background: var(--color-brown);
+                transform: scale(0.97);
+                box-shadow: 0 2px 8px rgba(93,58,58,0.3);
+            }
+            .mobile-bar-tickets .bar-icon { font-size: 1.6rem; line-height: 1; }
+            .mobile-bar-tickets .bar-label { font-size: 1.2rem; font-weight: 700; letter-spacing: 0.2px; }
+
+            /* Right side — 2×2 grid of individual pills */
+            .mobile-bar-grid {
+                flex: 0 0 calc(50% - 4px);
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+                gap: 6px;
+            }
+
+            .mobile-bar-cell {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 3px;
+                background: var(--color-cream);
+                border: 2px solid var(--color-brown);
+                border-radius: 16px;
+                cursor: pointer;
+                font-family: 'Quicksand', sans-serif;
+                font-weight: 700;
+                text-decoration: none;
+                color: var(--color-brown);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+                transition: background 0.18s, transform 0.15s;
+                -webkit-tap-highlight-color: transparent;
+                padding: 6px 4px;
+                min-height: 44px;
+            }
+            .mobile-bar-cell:active {
+                background: var(--color-yellow);
+                transform: scale(0.95);
+            }
+            .mobile-bar-cell .bar-icon { font-size: 1.05rem; line-height: 1; }
+            .mobile-bar-cell .bar-label {
+                font-size: 0.57rem;
+                font-weight: 700;
+                text-align: center;
+                line-height: 1.2;
+                color: var(--color-brown);
+            }
+
+            /* Body padding accounts for bar + bottom offset */
+            body { padding-bottom: 116px; }
+
+            /* Bump install prompt above the bar */
+            .install-prompt { bottom: 116px; }
         }
     </style>
 </head>
@@ -541,18 +644,18 @@
         <a href="https://link.outsavvy.com/twotonsoffun?utm_source=website&utm_medium=referral&utm_campaign=website-ticket-link-ribbon" 
            target="_blank" rel="noopener noreferrer" data-track="ribbon-tickets">
             <div class="ribbon-track" aria-hidden="true">
-                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
-                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
-                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
-                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
-                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
-                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
-                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
-                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
-                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
-                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
-                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
-                <span class="ribbon-item">🎉 NEXT EVENTS: <strong>Fri 24/04</strong> &amp; <strong>Fri 03/07 (PRIDE!)</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 Next events: <strong>Fri 24 Apr 2026</strong> &amp; <strong>Fri 3 Jul 2026</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 Next events: <strong>Fri 24 Apr 2026</strong> &amp; <strong>Fri 3 Jul 2026</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 Next events: <strong>Fri 24 Apr 2026</strong> &amp; <strong>Fri 3 Jul 2026</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 Next events: <strong>Fri 24 Apr 2026</strong> &amp; <strong>Fri 3 Jul 2026</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 Next events: <strong>Fri 24 Apr 2026</strong> &amp; <strong>Fri 3 Jul 2026</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 Next events: <strong>Fri 24 Apr 2026</strong> &amp; <strong>Fri 3 Jul 2026</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 Next events: <strong>Fri 24 Apr 2026</strong> &amp; <strong>Fri 3 Jul 2026</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 Next events: <strong>Fri 24 Apr 2026</strong> &amp; <strong>Fri 3 Jul 2026</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 Next events: <strong>Fri 24 Apr 2026</strong> &amp; <strong>Fri 3 Jul 2026</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 Next events: <strong>Fri 24 Apr 2026</strong> &amp; <strong>Fri 3 Jul 2026</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 Next events: <strong>Fri 24 Apr 2026</strong> &amp; <strong>Fri 3 Jul 2026</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
+                <span class="ribbon-item">🎉 Next events: <strong>Fri 24 Apr 2026</strong> &amp; <strong>Fri 3 Jul 2026</strong><span class="ribbon-dot"></span><span class="ribbon-cta">🎟️ Get Tickets</span></span>
             </div>
         </a>
     </div>
@@ -636,7 +739,7 @@
     <section class="merch" id="merch">
         <div class="section">
             <h2 class="section-title">Official Merch 👕</h2>
-            <p class="section-subtitle">Rep your favourite chub &amp; chaser night — tees, caps, pins &amp; more through our amazing partner KWEEN!</p>
+            <p class="section-subtitle">Rep your favourite chub &amp; chaser night — tees, caps, pins &amp; more!</p>
             <div class="merch-grid">
                 <a class="merch-card" href="https://kween.shop/products/two-tons-of-fun-unisex-classic-tee?variant=52609193705813" target="_blank" rel="noopener noreferrer" data-track="merch-classic-tee">
                     <img class="merch-card-img" src="https://kween.shop/cdn/shop/files/unisex-classic-tee-black-front-6998fa8067493.png?v=1771633297&width=600" alt="Two Tons of Fun Unisex Classic Tee" loading="lazy">
@@ -669,7 +772,7 @@
             </div>
             <div class="merch-cta-wrap">
                 <a href="https://kween.shop/collections/two-tons-of-fun" class="btn btn-primary" target="_blank" rel="noopener noreferrer" data-track="merch-shop-all">
-                    🛍️ Shop All Merch on kween.shop
+                    🛍️ Shop All Merch
                 </a>
             </div>
         </div>
@@ -747,6 +850,65 @@
         </div>
     </div>
 
+    <!-- =====================================================
+         MOBILE BOTTOM ACTION BAR (hidden on desktop via CSS)
+    ===================================================== -->
+    <div class="mobile-bottom-bar" role="navigation" aria-label="Quick actions">
+
+        <!-- Left 50%: Tickets primary CTA -->
+        <a class="mobile-bar-tickets"
+           href="https://link.outsavvy.com/twotonsoffun?utm_source=website&utm_medium=referral&utm_campaign=website-mobile-bar-tickets"
+           target="_blank" rel="noopener noreferrer"
+           data-track="mobile-bar-tickets"
+           aria-label="Get Tickets">
+            <span class="bar-icon">🎟️</span>
+            <span class="bar-label">Get Tickets</span>
+        </a>
+
+        <!-- Right 50%: 2×2 grid of engagement actions -->
+        <div class="mobile-bar-grid">
+
+            <!-- Row 1, Col 1: Merch -->
+            <a class="mobile-bar-cell"
+               href="#merch"
+               onclick="event.preventDefault(); mobileBarScroll('#merch');"
+               data-track="mobile-bar-merch"
+               aria-label="Shop Merch">
+                <span class="bar-icon">🛍️</span>
+                <span class="bar-label">Merch</span>
+            </a>
+
+            <!-- Row 1, Col 2: Newsletter -->
+            <button class="mobile-bar-cell"
+                    onclick="mobileBarScroll('#newsletter')"
+                    data-track="mobile-bar-newsletter"
+                    aria-label="Newsletter">
+                <span class="bar-icon">💌</span>
+                <span class="bar-label">Newsletter</span>
+            </button>
+
+            <!-- Row 2, Col 1: Notifications -->
+            <button class="mobile-bar-cell"
+                    onclick="triggerNotificationsPrompt()"
+                    data-track="mobile-bar-notifications"
+                    aria-label="Sign up to Notifications">
+                <span class="bar-icon">🔔</span>
+                <span class="bar-label">Notifications</span>
+            </button>
+
+            <!-- Row 2, Col 2: Get the App -->
+            <button class="mobile-bar-cell"
+                    onclick="triggerAppInstall()"
+                    data-track="mobile-bar-get-app"
+                    aria-label="Get the App">
+                <span class="bar-icon">📱</span>
+                <span class="bar-label">Get the App</span>
+            </button>
+
+        </div>
+
+    </div>
+
     <script>
         // =====================================================
         // CRITICAL: Defined first so available on page load
@@ -758,6 +920,18 @@
             navLinks.classList.toggle('active');
             const isOpen = navLinks.classList.contains('active');
             menuBtn.setAttribute('aria-expanded', isOpen);
+        }
+
+        // Smooth scroll helper for mobile bar buttons (respects fixed offset)
+        function mobileBarScroll(href) {
+            try {
+                const target = document.querySelector(href);
+                if (target) {
+                    const top = target.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET;
+                    window.scrollTo({ top: top, behavior: 'smooth' });
+                    trackEvent('section_view', { section: href, source: 'mobile_bar' });
+                }
+            } catch(e) {}
         }
 
         document.addEventListener('keydown', function(e) {
